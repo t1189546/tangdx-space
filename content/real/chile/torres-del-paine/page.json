@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "eyebrow": "The Real Part / Chilean Patagonia",
+    "titleLines": ["Torres", "del Paine"],
+    "description": "A page for the mountains, wind, lakes, trails, rooms, weather, and remote light of Torres del Paine National Park in Chilean Patagonia.",
+    "backgroundPosition": "center 42%",
+    "imageButtonLabel": "View full image"
+  },
+  "intro": {
+    "eyebrow": "Place",
+    "title": "At the southern edge of scale.",
+    "paragraphs": [
+      "Torres del Paine belongs to Chilean Patagonia: a place of granite towers, fast weather, glacial water, open roads, and a landscape that feels larger than the body moving through it.",
+      "This page is meant to hold the visual and emotional fragments of that place: not just a list of photos, but a quiet record of arriving, walking, looking, resting, and remembering."
+    ]
+  },
+  "outro": {
+    "eyebrow": "Torres del Paine / Chilean Patagonia",
+    "titleLines": ["Wind, water, stone,", "and the last light."],
+    "body": "Granite towers, glacial lakes, horse trails, rooms after weather, and clouds moving faster than memory.",
+    "link": {
+      "href": "/real/chile",
+      "label": "Back to Chile"
+    }
+  }
+}

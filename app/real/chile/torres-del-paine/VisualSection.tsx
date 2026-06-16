@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type {
-  VisualItem,
+  VisualImage,
   VisualSection as VisualSectionData,
 } from "./data";
 import FieldVideo from "./FieldVideo";
@@ -13,67 +13,79 @@ type VisualSectionProps = {
   onOpenImage: (src: string) => void;
 };
 
-const IMAGE_PREVIEW_LIMIT = 6;
+const IMAGE_PREVIEW_LIMIT = 3;
 const VIDEO_PREVIEW_LIMIT = 1;
+
+type ImageShape = VisualImage["shape"];
+
+function chunkImages(images: VisualImage[]) {
+  const chunks: VisualImage[][] = [];
+
+  for (let i = 0; i < images.length; i += 3) {
+    chunks.push(images.slice(i, i + 3));
+  }
+
+  return chunks;
+}
+
+function getMosaicPattern(sectionId: string, rowIndex: number): ImageShape[] {
+  const rightLargeSections = ["nature-studies", "shelter"];
+
+  const firstPattern: ImageShape[] = rightLargeSections.includes(sectionId)
+    ? ["small", "small", "large"]
+    : ["large", "small", "small"];
+
+  const secondPattern: ImageShape[] =
+    firstPattern[0] === "large"
+      ? ["small", "small", "large"]
+      : ["large", "small", "small"];
+
+  return rowIndex % 2 === 0 ? firstPattern : secondPattern;
+}
+
+function getDisplayImage(
+  image: VisualImage,
+  index: number,
+  rowLength: number,
+  pattern: ImageShape[],
+): VisualImage {
+  if (rowLength < 3) {
+    return image;
+  }
+
+  return {
+    ...image,
+    shape: pattern[index] ?? image.shape,
+  };
+}
 
 export default function VisualSectionComponent({
   section,
   onOpenImage,
 }: VisualSectionProps) {
-  const [showAll, setShowAll] = useState(false);
+  const [showAllImages, setShowAllImages] = useState(false);
+  const [showAllVideos, setShowAllVideos] = useState(false);
 
-  const sectionId = section.title
-    .toLowerCase()
-    .replaceAll("&", "and")
-    .replace(/\s+/g, "-");
+  const sectionId = section.id;
 
-  const totalImages = section.items.filter((item) => item.kind === "image").length;
-  const totalVideos = section.items.filter((item) => item.kind === "video").length;
+  const images = section.items.filter(
+    (item): item is VisualImage => item.kind === "image",
+  );
+  const videos = section.items.filter((item) => item.kind === "video");
 
-  const visibleItems = showAll
-    ? section.items
-    : section.items.filter((item) => {
-        let visibleImageCount = 0;
-        let visibleVideoCount = 0;
+  const previewImages = images.slice(0, IMAGE_PREVIEW_LIMIT);
+  const hiddenImages = images.slice(IMAGE_PREVIEW_LIMIT);
 
-        for (const currentItem of section.items) {
-          if (currentItem === item) {
-            if (currentItem.kind === "image") {
-              return visibleImageCount < IMAGE_PREVIEW_LIMIT;
-            }
+  const visibleVideos = showAllVideos
+    ? videos
+    : videos.slice(0, VIDEO_PREVIEW_LIMIT);
 
-            return visibleVideoCount < VIDEO_PREVIEW_LIMIT;
-          }
+  const hasHiddenImages = hiddenImages.length > 0;
+  const hasHiddenVideos = videos.length > VIDEO_PREVIEW_LIMIT;
 
-          if (currentItem.kind === "image") {
-            visibleImageCount += 1;
-          }
-
-          if (currentItem.kind === "video") {
-            visibleVideoCount += 1;
-          }
-        }
-
-        return false;
-      });
-
-  const hiddenImages = Math.max(totalImages - IMAGE_PREVIEW_LIMIT, 0);
-  const hiddenVideos = Math.max(totalVideos - VIDEO_PREVIEW_LIMIT, 0);
-  const hasHiddenItems = hiddenImages > 0 || hiddenVideos > 0;
-
-  function getHiddenText() {
-    const parts = [];
-
-    if (hiddenImages > 0) {
-      parts.push(`${hiddenImages} more image${hiddenImages > 1 ? "s" : ""}`);
-    }
-
-    if (hiddenVideos > 0) {
-      parts.push(`${hiddenVideos} more video${hiddenVideos > 1 ? "s" : ""}`);
-    }
-
-    return parts.join(" / ");
-  }
+  const visibleImageRows = chunkImages(
+    showAllImages ? images : previewImages,
+  );
 
   return (
     <section
@@ -90,39 +102,67 @@ export default function VisualSectionComponent({
             {section.title}
           </h2>
 
-          <div>
-            <p className="max-w-2xl text-lg leading-9 text-black/60">
-              {section.description}
-            </p>
+          <p className="max-w-2xl text-lg leading-9 text-black/60">
+            {section.description}
+          </p>
+        </div>
 
-            
+        {visibleImageRows.length > 0 && (
+          <div className="mt-16 space-y-4">
+            {visibleImageRows.map((row, rowIndex) => {
+              const pattern = getMosaicPattern(sectionId, rowIndex);
+
+              return (
+                <div
+                  key={`${sectionId}-image-row-${rowIndex}`}
+                  className="grid gap-4 md:grid-cols-4"
+                >
+                  {row.map((item, index) => (
+                    <ImageCard
+                      key={item.src}
+                      image={getDisplayImage(
+                        item,
+                        index,
+                        row.length,
+                        pattern,
+                      )}
+                      onOpen={onOpenImage}
+                    />
+                  ))}
+                </div>
+              );
+            })}
           </div>
-        </div>
+        )}
 
-        <div className="mt-16 grid gap-4 md:grid-cols-4">
-          {visibleItems.map((item: VisualItem) => {
-            if (item.kind === "video") {
-              return <FieldVideo key={item.src} item={item} />;
-            }
-
-            return (
-              <ImageCard
-                key={item.src}
-                image={item}
-                onOpen={onOpenImage}
-              />
-            );
-          })}
-        </div>
-
-        {hasHiddenItems && (
+        {hasHiddenImages && (
           <div className="mt-12 flex justify-center">
             <button
               type="button"
-              onClick={() => setShowAll((current) => !current)}
+              onClick={() => setShowAllImages((current) => !current)}
               className="border border-black/15 px-8 py-4 text-xs uppercase tracking-[0.25em] text-black/50 transition hover:bg-black hover:text-white"
             >
-              {showAll ? "Collapse section" : `View more / ${getHiddenText()}`}
+              {showAllImages ? "Hide images" : "View more images"}
+            </button>
+          </div>
+        )}
+
+        {visibleVideos.length > 0 && (
+          <div className="mt-16 grid gap-4 md:grid-cols-4">
+            {visibleVideos.map((item) => (
+              <FieldVideo key={item.src} item={item} />
+            ))}
+          </div>
+        )}
+
+        {hasHiddenVideos && (
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllVideos((current) => !current)}
+              className="border border-black/15 px-8 py-4 text-xs uppercase tracking-[0.25em] text-black/50 transition hover:bg-black hover:text-white"
+            >
+              {showAllVideos ? "Hide videos" : "View more videos"}
             </button>
           </div>
         )}

@@ -126,7 +126,7 @@ export default function ImaginaryPage() {
           <div className="text-lg leading-9 text-white/75">
             <p>
               Games, fictional spaces, coffee notes, daily fragments, and
-              thoughts that belong more to atmosphere than geography.
+              thoughts that belong more to atmosphere.
             </p>
 
             <a

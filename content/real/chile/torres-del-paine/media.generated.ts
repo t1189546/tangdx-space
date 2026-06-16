@@ -1,0 +1,553 @@
+import type { LightboxImage, PlaceMedia, VisualImage, VisualSection, VisualVideo } from "@/components/real/place/types";
+
+const imageBase = "/images/real/chile/torres-del-paine";
+
+const videoBase =
+  "https://hebs7dfiyg1zinks.public.blob.vercel-storage.com/torres-del-paine";
+
+function localImage(fileName: string) {
+  return `${imageBase}/${fileName}`;
+}
+
+function blobVideo(fileName: string) {
+  return `${videoBase}/${fileName}`;
+}
+
+function image(item: Omit<VisualImage, "kind">): VisualImage {
+  return {
+    kind: "image",
+    ...item,
+  };
+}
+
+function video(item: Omit<VisualVideo, "kind">): VisualVideo {
+  return {
+    kind: "video",
+    ...item,
+  };
+}
+
+export const heroImage: LightboxImage = {
+  title: "Torres del Paine",
+  subtitle: "The opening view of Chilean Patagonia.",
+  src: localImage("tdp-000.jpg"),
+};
+
+export const visualSections: VisualSection[] = [
+  {
+    id: "mountains-lakes",
+    number: "01",
+    title: "Mountains & Lakes",
+    description:
+      "Granite towers, glacial water, pale light, and the scale of Chilean Patagonia.",
+    items: [
+      image({
+        id: "tdp-007",
+        title: "Base Torees",
+        subtitle: "Granite peaks,Lago Torres, cloud, and wind.",
+        note: "The toughest part of the hike for me.",
+        src: localImage("tdp-007.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-002",
+        title: "A guanaco on the Mountain",
+        subtitle: "A guanaco enjoys the view from the best spot",
+        note: "The lake holds the mountains at a slower rhythm.",
+        src: localImage("tdp-002.jpg"),
+        crop: "top",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-005",
+        title: "Weather",
+        subtitle: "Clouds moving fast over an unfinished landscape.",
+        note: "A sky that changes faster than the page can describe.",
+        src: localImage("tdp-005.jpg"),
+        crop: "top",
+        shape: "small",
+      }),
+      video({
+        id: "tdp-v001",
+        title: "Lake and Mountain",
+        subtitle: "Wind, water, and a mountain disappearing into weather.",
+        note: "A muted field video of the lake and mountains. The full sound can be opened gently through the video controls.",
+        src: blobVideo("tdp-v001.mp4"),
+        shape: "video-wide",
+      }),
+      video({
+        id: "tdp-v002",
+        title: "Glacier",
+        subtitle: "Blue ice, distance, and the slow pressure of cold.",
+        note: "A short video fragment for the glacier section of Torres del Paine.",
+        src: blobVideo("tdp-v002.mp4"),
+        shape: "video-wide",
+      }),
+      video({
+        id: "tdp-v003",
+        title: "Towers and Falls",
+        subtitle: "The three towers, falling water, and the movement of the valley.",
+        note: "A field video connecting the iconic granite towers with water and motion.",
+        src: blobVideo("tdp-v003.mp4"),
+        shape: "video-wide",
+      }),
+      image({
+        id: "tdp-001",
+        title: "The Rainbow",
+        subtitle: "A rainbow spanning the mountains",
+        note: "The rainbow lies between the clouds and the mountains.",
+        src: localImage("tdp-001.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      
+      image({
+        id: "tdp-009",
+        title: "Pale Water",
+        subtitle: "Wind drawn across a turquoise lake.",
+        note: "The lake holds the mountains at a slower rhythm.",
+        src: localImage("tdp-009.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-010",
+        title: "Across the Lake",
+        subtitle: "Granite towers above cold blue water.",
+        note: "Distance leaves the massif clear and still.",
+        src: localImage("tdp-010.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+
+      image({
+        id: "tdp-015",
+        title: "Glacier Face",
+        subtitle: "A field of blue beneath low cloud.",
+        note: "The glacier continues beyond the edge of sight.",
+        src: localImage("tdp-015.jpg"),
+        crop: "center",
+        cropPosition: "50% 0%",
+imageZoom: 1.0,
+imageShiftY: "0%",
+        shape: "wide",
+      }),
+
+      image({
+  id: "tdp-012",
+  title: "Blue Field",
+  subtitle: "Glacier and mountain under a quiet sky.",
+  note: "The ice spreads slowly beneath the dark ridge.",
+  src: localImage("tdp-012.jpg"),
+  crop: "center",
+  cropPosition: "50% 0%",
+imageZoom: 1.0,
+imageShiftY: "0%",
+  shape: "wide",
+}),
+      image({
+        id: "tdp-013",
+        title: "Ice Spine",
+        subtitle: "Blue pressure beneath a distant peak.",
+        note: "The glacier rises in folds toward the mountain.",
+        src: localImage("tdp-013.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      
+            image({
+        id: "tdp-011",
+        title: "Falling Water",
+        subtitle: "Snow peaks beyond the river.",
+        note: "Water moves quickly beneath the distant massif.",
+        src: localImage("tdp-011.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+
+      image({
+        id: "tdp-016",
+        title: "Autumn Range",
+        subtitle: "Red forest beneath snow and cloud.",
+        note: "The season gathers quietly below the peaks.",
+        src: localImage("tdp-016.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-017",
+        title: "Long Valley",
+        subtitle: "Autumn ground beneath a white horizon.",
+        note: "The valley opens slowly toward the distant ridge.",
+        src: localImage("tdp-017.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-018",
+        title: "Stone Window",
+        subtitle: "The mountain seen from the rock edge.",
+        note: "Dark stone holds a distant field of light.",
+        src: localImage("tdp-018.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+    ],
+  },
+  {
+    id: "routes-movement",
+    number: "02",
+    title: "Routes & Movement",
+    description:
+      "Horse trails, mountain roads, crossings, pauses, and the feeling of moving through distance.",
+    items: [
+      image({
+        id: "tdp-003",
+        title: "Routes",
+        subtitle: "Roads, trails, crossings, and the scale of Patagonia.",
+        note: "A body moving through distance, wind, and open ground.",
+        src: localImage("tdp-003.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-019",
+        title: "On the Trail",
+        subtitle: "A pause above the snowy valley.",
+        note: "The route continues between stone, forest, and snow.",
+        src: localImage("tdp-019.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-020",
+        title: "At the Crossing",
+        subtitle: "A brief pause beneath the rainbow.",
+        note: "Two figures stop where weather meets the route.",
+        src: localImage("tdp-020.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-021",
+        title: "Through Distance",
+        subtitle: "A figure beneath the mountain range.",
+        note: "The body gives measure to the open ground.",
+        src: localImage("tdp-021.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-022",
+        title: "Open Ground",
+        subtitle: "A faint path under a wide sky.",
+        note: "The route bends through grass toward the distant peaks.",
+        src: localImage("tdp-022.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-023",
+        title: "Mountain Road",
+        subtitle: "A grey line through open country.",
+        note: "The road turns quietly beneath the snowy ridge.",
+        src: localImage("tdp-023.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-024",
+        title: "Against the Wind",
+        subtitle: "A small pause above the valley.",
+        note: "Cold air and distance gather around two travellers.",
+        src: localImage("tdp-024.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+    ],
+  },
+  {
+    id: "nature-studies",
+    number: "03",
+    title: "Nature Studies",
+    description:
+      "Lichens, berries, plants, animals, textures, and small lives close to the ground.",
+    items: [
+      image({
+        id: "tdp-004",
+        title: "Small Life",
+        subtitle: "Textures found close to the ground.",
+        note: "A place for lichens, berries, plants, animals, flowers, stones, and small details.",
+        src: localImage("tdp-004.jpg"),
+        crop: "top",
+        shape: "small",
+      }),
+      video({
+        id: "tdp-v004",
+        title: "Guanaco",
+        subtitle: "A herd moving quietly through the open ground.",
+        note: "A short field video of guanacos in the Patagonian landscape.",
+        src: blobVideo("tdp-v004.mp4"),
+        shape: "video-wide",
+      }),
+      image({
+        id: "tdp-025",
+        title: "Caracaras",
+        subtitle: "Two birds resting in the grass.",
+        note: "Dark feathers hold their shape against the pale ground.",
+        src: localImage("tdp-025.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-026",
+        title: "Guanacos",
+        subtitle: "A herd grazing beside the water.",
+        note: "The animals move softly across the autumn ground.",
+        src: localImage("tdp-026.jpg"),
+        crop: "center",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-027",
+        title: "Pink Trace",
+        subtitle: "A distant bird moving through the water.",
+        note: "A small line of colour crosses the cold surface.",
+        src: localImage("tdp-027.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-028",
+        title: "Stone Arch",
+        subtitle: "Weathered rock against clear blue.",
+        note: "Time leaves a narrow opening in the ridge.",
+        src: localImage("tdp-028.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-029",
+        title: "Cushion Ground",
+        subtitle: "Low forms gathered beside dark water.",
+        note: "Small plants make a dense field across the slope.",
+        src: localImage("tdp-029.jpg"),
+        crop: "center",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-030",
+        title: "Low Flowers",
+        subtitle: "White bloom across a green cushion.",
+        note: "A small flowering world stays close to the ground.",
+        src: localImage("tdp-030.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-031",
+        title: "Small Cap",
+        subtitle: "A mushroom among moss and stems.",
+        note: "One quiet form rises from the miniature ground.",
+        src: localImage("tdp-031.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-032",
+        title: "Forest Floor",
+        subtitle: "A broad cap beneath fallen leaves.",
+        note: "The mushroom sits half-hidden in the wet ground.",
+        src: localImage("tdp-032.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-033",
+        title: "Red Berries",
+        subtitle: "Bright fruit held in low green branches.",
+        note: "Colour gathers densely near the ground.",
+        src: localImage("tdp-033.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-034",
+        title: "Pink Fruit",
+        subtitle: "Small berries among dark leaves.",
+        note: "Soft colour appears briefly inside the dense shrub.",
+        src: localImage("tdp-034.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-035",
+        title: "Wild Fruit",
+        subtitle: "Red and green held on one branch.",
+        note: "The season turns slowly across the leaves.",
+        src: localImage("tdp-035.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-036",
+        title: "Single Berry",
+        subtitle: "Dark fruit against pale water.",
+        note: "One small form holds the centre of the branch.",
+        src: localImage("tdp-036.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-037",
+        title: "New Growth",
+        subtitle: "Yellow needles and weathered cones.",
+        note: "Fine colour returns along the dark branch.",
+        src: localImage("tdp-037.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-038",
+        title: "Yellow Fungi",
+        subtitle: "Small forms along a bare branch.",
+        note: "Bright growth appears inside a tangle of wood.",
+        src: localImage("tdp-038.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-039",
+        title: "Lichen",
+        subtitle: "Pale growth across sun-warmed stone.",
+        note: "A slow surface gathers over the rock.",
+        src: localImage("tdp-039.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+    ],
+  },
+  {
+    id: "shelter",
+    number: "04",
+    title: "Shelter",
+    description:
+      "Rooms, meals, windows, warm interiors, and the quiet return from wind and weather.",
+    items: [
+      
+      image({
+        id: "tdp-040",
+        title: "Room with a View",
+        subtitle: "Warm wood facing snow and distance.",
+        note: "The mountain remains present beyond the quiet room.",
+        src: localImage("tdp-040.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-041",
+        title: "Evening Plate",
+        subtitle: "A warm meal after the cold.",
+        note: "Colour and stillness return at the table.",
+        src: localImage("tdp-041.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-042",
+        title: "Trail Meal",
+        subtitle: "Warm food above the frozen lake.",
+        note: "A small pause brings shelter into the open air.",
+        src: localImage("tdp-042.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-043",
+        title: "Warm Water",
+        subtitle: "Stillness at the edge of the lake.",
+        note: "Heat gathers quietly against the evening cold.",
+        src: localImage("tdp-043.jpg"),
+        crop: "top",
+        shape: "large",
+      }),
+    ],
+  },
+  {
+    id: "weather-light",
+    number: "05",
+    title: "Weather & Light",
+    description:
+      "Clouds, rainbows, sudden brightness, evening color, and the changing sky of Patagonia.",
+    items: [
+      image({
+        id: "tdp-006",
+        title: "Memory",
+        subtitle: "A fragment kept from the edge of the world.",
+        note: "A wide image to close the sequence: red trees, mountain, evening.",
+        src: localImage("tdp-006.jpg"),
+        crop: "center",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-044",
+        title: "First Light",
+        subtitle: "Gold cloud above dark autumn ground.",
+        note: "Morning reaches the valley before the cold leaves.",
+        src: localImage("tdp-044.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-045",
+        title: "Rainbow",
+        subtitle: "Colour falling across mountain and water.",
+        note: "Rain and sun meet briefly over the slope.",
+        src: localImage("tdp-045.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-046",
+        title: "Evening Fire",
+        subtitle: "Red forest beneath a burning sky.",
+        note: "The last light moves across autumn and snow.",
+        src: localImage("tdp-046.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-047",
+        title: "Last Light",
+        subtitle: "Pink cloud over the quiet lake.",
+        note: "Evening settles across water, forest, and stone.",
+        src: localImage("tdp-047.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-048",
+        title: "After Rain",
+        subtitle: "A guanaco beneath the fading rainbow.",
+        note: "Brief colour touches the open ground and disappears.",
+        src: localImage("tdp-048.jpg"),
+        crop: "top",
+        shape: "wide",
+      }),
+    ],
+  },
+];
+export const lightboxImages: LightboxImage[] = [
+  heroImage,
+  ...visualSections.flatMap((section) =>
+    section.items.filter((item): item is VisualImage => item.kind === "image"),
+  ),
+];
+
+const media: PlaceMedia = {
+  heroImage,
+  visualSections,
+};
+
+export default media;
