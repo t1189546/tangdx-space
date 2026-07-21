@@ -18,8 +18,37 @@ const VIDEO_PREVIEW_LIMIT = 1;
 
 type ImageShape = VisualImage["shape"];
 
-function chunkImages(images: VisualImage[]) {
+function chunkImages(images: VisualImage[], preserveImageShapes = false) {
   const chunks: VisualImage[][] = [];
+
+  if (preserveImageShapes) {
+    let currentChunk: VisualImage[] = [];
+
+    for (const image of images) {
+      if (image.shape === "wide") {
+        if (currentChunk.length > 0) {
+          chunks.push(currentChunk);
+          currentChunk = [];
+        }
+
+        chunks.push([image]);
+        continue;
+      }
+
+      currentChunk.push(image);
+
+      if (currentChunk.length === 3) {
+        chunks.push(currentChunk);
+        currentChunk = [];
+      }
+    }
+
+    if (currentChunk.length > 0) {
+      chunks.push(currentChunk);
+    }
+
+    return chunks;
+  }
 
   for (let i = 0; i < images.length; i += 3) {
     chunks.push(images.slice(i, i + 3));
@@ -48,8 +77,9 @@ function getDisplayImage(
   index: number,
   rowLength: number,
   pattern: ImageShape[],
+  preserveImageShapes = false,
 ): VisualImage {
-  if (rowLength < 3) {
+  if (preserveImageShapes || rowLength < 3) {
     return image;
   }
 
@@ -73,18 +103,22 @@ export default function VisualSectionComponent({
   );
   const videos = section.items.filter((item) => item.kind === "video");
 
-  const previewImages = images.slice(0, IMAGE_PREVIEW_LIMIT);
-  const hiddenImages = images.slice(IMAGE_PREVIEW_LIMIT);
+  const imagePreviewLimit = section.imagePreviewLimit ?? IMAGE_PREVIEW_LIMIT;
+  const videoPreviewLimit = section.videoPreviewLimit ?? VIDEO_PREVIEW_LIMIT;
 
+  const visibleImages = showAllImages
+    ? images
+    : images.slice(0, imagePreviewLimit);
   const visibleVideos = showAllVideos
     ? videos
-    : videos.slice(0, VIDEO_PREVIEW_LIMIT);
+    : videos.slice(0, videoPreviewLimit);
 
-  const hasHiddenImages = hiddenImages.length > 0;
-  const hasHiddenVideos = videos.length > VIDEO_PREVIEW_LIMIT;
+  const hasHiddenImages = images.length > imagePreviewLimit;
+  const hasHiddenVideos = videos.length > videoPreviewLimit;
 
   const visibleImageRows = chunkImages(
-    showAllImages ? images : previewImages,
+    visibleImages,
+    section.preserveImageShapes,
   );
 
   return (
@@ -125,6 +159,7 @@ export default function VisualSectionComponent({
                         index,
                         row.length,
                         pattern,
+                        section.preserveImageShapes,
                       )}
                       onOpen={onOpenImage}
                     />

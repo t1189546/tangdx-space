@@ -20,9 +20,9 @@ const realRegions = [
       {
         label: "Belize",
         title: "Belize",
-        description: "Coral, Caribbean Sea, Maya ruins.",
-        href: "#",
-        status: "Future page",
+        description: "reef, ruins, and Caribbean light.",
+        href: "/real/belize",
+        status: "Open Belize",
       },
     ],
   },

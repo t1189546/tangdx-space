@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "media:posters": "node scripts/generate-video-posters.mjs",
+    "media:posters:force": "node scripts/generate-video-posters.mjs --force"
   },
   "dependencies": {
     "next": "16.2.9",

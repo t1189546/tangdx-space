@@ -13,17 +13,23 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
   const isSmall = image.shape === "small";
   const isWide = image.shape === "wide";
 
-  const imageZoom = image.imageZoom ?? 1;
-  const defaultOffset = `${((1 - imageZoom) * 50).toFixed(2)}%`;
-
-  const smallImageStyle: CSSProperties = {
-    objectPosition:
-      image.cropPosition ?? (image.crop === "top" ? "50% 0%" : "50% 50%"),
-    width: `${imageZoom * 100}%`,
-    height: `${imageZoom * 100}%`,
-    left: image.imageShiftX ?? defaultOffset,
-    top: image.imageShiftY ?? defaultOffset,
+  const objectPosition =
+    image.cropPosition ?? (image.crop === "top" ? "50% 0%" : "50% 50%");
+  const hasTransform =
+    image.imageZoom !== undefined ||
+    image.imageShiftX !== undefined ||
+    image.imageShiftY !== undefined;
+  const imageStyle: CSSProperties = {
+    objectPosition,
+    transform: hasTransform
+      ? `translate(${image.imageShiftX ?? "0%"}, ${
+          image.imageShiftY ?? "0%"
+        }) scale(${image.imageZoom ?? 1})`
+      : undefined,
+    transformOrigin: objectPosition,
   };
+  const coverImageClass =
+    "absolute inset-0 block h-full w-full object-cover transition duration-700";
 
   if (isSmall) {
     return (
@@ -38,8 +44,8 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
             alt={image.title}
             loading="lazy"
             decoding="async"
-            style={smallImageStyle}
-            className="absolute object-cover transition duration-700"
+            style={imageStyle}
+            className={coverImageClass}
           />
 
           <div className="absolute inset-0 bg-black/12 transition duration-500 group-hover:bg-black/0" />
@@ -84,21 +90,9 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
         <img
           src={image.src}
           alt={image.title}
-          style={{
-            objectPosition: image.cropPosition,
-            transform:
-              image.imageZoom || image.imageShiftX || image.imageShiftY
-                ? `translate(${image.imageShiftX ?? "0%"}, ${
-                    image.imageShiftY ?? "0%"
-                  }) scale(${image.imageZoom ?? 1})`
-                : undefined,
-          }}
-          className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 ${
-            image.cropPosition
-              ? ""
-              : image.crop === "top"
-                ? "object-top"
-                : "object-center"
+          style={imageStyle}
+          className={`${coverImageClass} ${
+            hasTransform ? "" : "group-hover:scale-105"
           }`}
         />
 

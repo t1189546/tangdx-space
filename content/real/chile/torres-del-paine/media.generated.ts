@@ -3,13 +3,13 @@ import type { LightboxImage, PlaceMedia, VisualImage, VisualSection, VisualVideo
 const imageBase = "/images/real/chile/torres-del-paine";
 
 const videoBase =
-  "https://hebs7dfiyg1zinks.public.blob.vercel-storage.com/torres-del-paine";
+  "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/videos/real/chile/torres-del-paine";
 
 function localImage(fileName: string) {
   return `${imageBase}/${fileName}`;
 }
 
-function blobVideo(fileName: string) {
+function r2Video(fileName: string) {
   return `${videoBase}/${fileName}`;
 }
 
@@ -73,7 +73,8 @@ export const visualSections: VisualSection[] = [
         title: "Lake and Mountain",
         subtitle: "Wind, water, and a mountain disappearing into weather.",
         note: "A muted field video of the lake and mountains. The full sound can be opened gently through the video controls.",
-        src: blobVideo("tdp-v001.mp4"),
+        src: r2Video("tdp-v001.mp4"),
+        poster: localImage("tdp-v001-poster.jpg"),
         shape: "video-wide",
       }),
       video({
@@ -81,7 +82,8 @@ export const visualSections: VisualSection[] = [
         title: "Glacier",
         subtitle: "Blue ice, distance, and the slow pressure of cold.",
         note: "A short video fragment for the glacier section of Torres del Paine.",
-        src: blobVideo("tdp-v002.mp4"),
+        src: r2Video("tdp-v002.mp4"),
+        poster: localImage("tdp-v002-poster.jpg"),
         shape: "video-wide",
       }),
       video({
@@ -89,7 +91,8 @@ export const visualSections: VisualSection[] = [
         title: "Towers and Falls",
         subtitle: "The three towers, falling water, and the movement of the valley.",
         note: "A field video connecting the iconic granite towers with water and motion.",
-        src: blobVideo("tdp-v003.mp4"),
+        src: r2Video("tdp-v003.mp4"),
+        poster: localImage("tdp-v003-poster.jpg"),
         shape: "video-wide",
       }),
       image({
@@ -288,7 +291,8 @@ imageShiftY: "0%",
         title: "Guanaco",
         subtitle: "A herd moving quietly through the open ground.",
         note: "A short field video of guanacos in the Patagonian landscape.",
-        src: blobVideo("tdp-v004.mp4"),
+        src: r2Video("tdp-v004.mp4"),
+        poster: localImage("tdp-v004-poster.jpg"),
         shape: "video-wide",
       }),
       image({

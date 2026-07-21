@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import SiteHeader from "@/app/components/SiteHeader";
 import Lightbox from "./Lightbox";
 import VisualSectionComponent from "./VisualSection";
@@ -29,6 +30,22 @@ export default function PlacePage({ content, media }: PlacePageProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const lightboxImages = useMemo(() => getLightboxImages(media), [media]);
+  const heroPosition =
+    media.heroImage.cropPosition ?? content.hero.backgroundPosition ?? "center";
+  const heroTransform =
+    media.heroImage.imageZoom ||
+    media.heroImage.imageShiftX ||
+    media.heroImage.imageShiftY
+      ? `translate(${media.heroImage.imageShiftX ?? "0%"}, ${
+          media.heroImage.imageShiftY ?? "0%"
+        }) scale(${media.heroImage.imageZoom ?? 1})`
+      : undefined;
+  const heroImageStyle: CSSProperties = {
+    backgroundImage: `url('${media.heroImage.src}')`,
+    backgroundPosition: heroPosition,
+    transform: heroTransform,
+    transformOrigin: heroPosition,
+  };
 
   function openLightboxBySrc(src: string) {
     const imageIndex = lightboxImages.findIndex((image) => image.src === src);
@@ -51,10 +68,7 @@ export default function PlacePage({ content, media }: PlacePageProps) {
       <section className="relative mt-[80px] flex h-[calc(100vh-80px)] items-center overflow-hidden px-6 md:px-12">
         <div
           className="absolute inset-0 bg-cover"
-          style={{
-            backgroundImage: `url('${media.heroImage.src}')`,
-            backgroundPosition: content.hero.backgroundPosition ?? "center",
-          }}
+          style={heroImageStyle}
         />
         <div className="absolute inset-0 bg-black/45" />
 

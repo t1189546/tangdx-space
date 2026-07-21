@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "eyebrow": "The Real Part / Belize",
+    "titleLines": ["Belize"],
+    "description": "reef, ruins, and fragments of Caribbean light.",
+    "backgroundPosition": "center",
+    "imageButtonLabel": "View full image"
+  },
+  "intro": {
+    "eyebrow": "Place",
+    "title": "reef, ruins, and fragments of Caribbean light.",
+    "paragraphs": [
+      "A record of blue water, Maya ruins, animals and evening light."
+    ]
+  },
+  "outro": {
+    "eyebrow": "Belize / Caribbean light",
+    "titleLines": ["Reef, ruins,", "and small scenes."],
+    "body": "Water, Maya, animals, streets, and the evening gathered into fragments.",
+    "link": {
+      "href": "/real",
+      "label": "Back to Real"
+    }
+  }
+}

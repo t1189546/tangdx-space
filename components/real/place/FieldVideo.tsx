@@ -1,41 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import type { VisualVideo } from "./types";
 
 export default function FieldVideo({ item }: { item: VisualVideo }) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  return <FieldVideoCard key={item.src} item={item} />;
+}
 
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.volume = 0.18;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {
-            // Some browsers may block autoplay. The controls still work.
-          });
-        } else {
-          video.pause();
-        }
-      },
-      {
-        threshold: 0.35,
-      },
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+function FieldVideoCard({ item }: { item: VisualVideo }) {
+  const [isActivated, setIsActivated] = useState(false);
 
   return (
     <article
@@ -44,22 +17,50 @@ export default function FieldVideo({ item }: { item: VisualVideo }) {
       }`}
     >
       <div className="relative aspect-video w-full overflow-hidden bg-black">
-        <video
-          ref={videoRef}
-          src={item.src}
-          muted
-          loop
-          controls
-          playsInline
-          preload="metadata"
-          onLoadedMetadata={(event) => {
-            event.currentTarget.volume = 0.18;
-          }}
-          onPlay={(event) => {
-            event.currentTarget.volume = 0.18;
-          }}
-          className="h-full w-full object-cover"
-        />
+        {isActivated ? (
+          <video
+            src={item.src}
+            poster={item.poster}
+            controls
+            autoPlay
+            playsInline
+            preload="none"
+            aria-label={item.title}
+            className="h-full w-full object-cover"
+          >
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className="absolute inset-0 bg-[#171310]">
+            {item.poster && (
+              <img
+                src={item.poster}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            )}
+
+            <div className="absolute inset-0 bg-black/25" />
+
+            {!item.poster && (
+              <p className="absolute inset-x-6 bottom-6 font-serif text-2xl text-white/70">
+                {item.title}
+              </p>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setIsActivated(true)}
+              aria-label={`Play video: ${item.title}`}
+              className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/55 bg-black/35 text-white transition hover:scale-105 hover:bg-black/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <span
+                aria-hidden="true"
+                className="ml-1 block h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-white"
+              />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="grid gap-8 p-7 md:grid-cols-[0.7fr_1.3fr]">
@@ -73,8 +74,14 @@ export default function FieldVideo({ item }: { item: VisualVideo }) {
         </div>
 
         <div>
-          <p className="text-lg leading-8 text-white/65">{item.subtitle}</p>
-          <p className="mt-5 text-sm leading-7 text-white/45">{item.note}</p>
+          {item.subtitle && (
+            <p className="text-lg leading-8 text-white/65">{item.subtitle}</p>
+          )}
+          {item.note && (
+            <p className="mt-5 text-sm leading-7 text-white/45">
+              {item.note}
+            </p>
+          )}
         </div>
       </div>
     </article>

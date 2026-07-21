@@ -2,6 +2,10 @@ export type LightboxImage = {
   src: string;
   title: string;
   subtitle: string;
+  cropPosition?: string;
+  imageZoom?: number;
+  imageShiftX?: string;
+  imageShiftY?: string;
 };
 
 export type ImageCrop = "top" | "center";
@@ -24,8 +28,8 @@ export type VisualVideo = {
   kind: "video";
   id: string;
   title: string;
-  subtitle: string;
-  note: string;
+  subtitle?: string;
+  note?: string;
   src: string;
   poster?: string;
   shape: VideoShape;
@@ -38,6 +42,9 @@ export type VisualSection = {
   number: string;
   title: string;
   description: string;
+  imagePreviewLimit?: number;
+  videoPreviewLimit?: number;
+  preserveImageShapes?: boolean;
   items: VisualItem[];
 };
 

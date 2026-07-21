@@ -40,9 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-public/videos/
-
-
+# Large source videos are hosted on Cloudflare R2
+/public/videos/
 
 # Local media working folders
 media-inbox/

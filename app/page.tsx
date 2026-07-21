@@ -139,13 +139,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          <footer className="border-t border-white/15 px-6 py-8 md:px-12">
-            <div className="mx-auto flex max-w-7xl flex-col gap-4 text-xs uppercase tracking-[0.3em] text-white/55 md:flex-row md:items-center md:justify-between">
-              <p>Tang&apos;s Space</p>
-              <p>Designed by Dongxian Tang</p>
-              <p>tangdx.space</p>
-            </div>
-          </footer>
+          <footer className="border-t border-white/20 py-8 text-center text-xs uppercase tracking-[0.35em] text-white/70">
+  DESIGNED BY DONGXIAN TANG
+</footer>
         </section>
       </main>
     </>
