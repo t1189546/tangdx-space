@@ -2,9 +2,11 @@
 
 /* eslint-disable @next/next/no-img-element -- Legacy pages still provide string-only posters. */
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import OptimizedPhoto from "@/components/media/OptimizedPhoto";
 import type { VisualVideo } from "./types";
+
+const DEFAULT_VIDEO_VOLUME = 0.3;
 
 export default function FieldVideo({ item }: { item: VisualVideo }) {
   return <FieldVideoCard key={item.src} item={item} />;
@@ -12,6 +14,31 @@ export default function FieldVideo({ item }: { item: VisualVideo }) {
 
 function FieldVideoCard({ item }: { item: VisualVideo }) {
   const [isActivated, setIsActivated] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const applyDefaultVolume = useCallback((video: HTMLVideoElement) => {
+    try {
+      video.volume = DEFAULT_VIDEO_VOLUME;
+    } catch {
+      // iOS Safari may expose volume as read-only and keep native system volume.
+    } finally {
+      video.dataset.effectiveVolume = String(video.volume);
+    }
+  }, []);
+
+  const activateVideo = useCallback(
+    (video: HTMLVideoElement | null) => {
+      videoRef.current = video;
+
+      if (!video) return;
+
+      applyDefaultVolume(video);
+      void video.play().catch(() => {
+        // Native controls remain available if browser autoplay policy blocks play.
+      });
+    },
+    [applyDefaultVolume],
+  );
 
   return (
     <article
@@ -22,14 +49,20 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
       <div className="relative aspect-video w-full overflow-hidden bg-black">
         {isActivated ? (
           <video
+            ref={activateVideo}
             src={item.src}
             poster={item.poster}
             controls
-            autoPlay
             playsInline
             preload="none"
             aria-label={item.title}
             className="h-full w-full object-cover"
+            onLoadedMetadata={(event) => {
+              applyDefaultVolume(event.currentTarget);
+            }}
+            onPlay={(event) => {
+              applyDefaultVolume(event.currentTarget);
+            }}
           >
             Your browser does not support the video tag.
           </video>

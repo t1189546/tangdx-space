@@ -4,6 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import type { Dispatch, PointerEvent, SetStateAction } from "react";
 import type { LightboxImage } from "./types";
 
+const ORIGINAL_LOAD_TIMEOUT_MS = 30_000;
+
+type LoadedOriginal = {
+  fallbackSrc: string;
+  originalSrc: string;
+};
+
 type LightboxProps = {
   images: LightboxImage[];
   selectedIndex: number | null;
@@ -19,11 +26,21 @@ export default function Lightbox({
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [loadedOriginal, setLoadedOriginal] =
+    useState<LoadedOriginal | null>(null);
 
   const selectedImage =
     selectedIndex === null ? null : images[selectedIndex];
 
+  const displaySrc =
+    selectedImage?.originalSrc &&
+    loadedOriginal?.fallbackSrc === selectedImage.src &&
+    loadedOriginal.originalSrc === selectedImage.originalSrc
+      ? loadedOriginal.originalSrc
+      : selectedImage?.src;
+
   const closeLightbox = useCallback(() => {
+    setLoadedOriginal(null);
     setSelectedIndex(null);
     setZoom(1);
     setOffset({ x: 0, y: 0 });
@@ -31,6 +48,7 @@ export default function Lightbox({
   }, [setSelectedIndex]);
 
   const showPrevious = useCallback(() => {
+    setLoadedOriginal(null);
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) return currentIndex;
       return currentIndex === 0 ? images.length - 1 : currentIndex - 1;
@@ -42,6 +60,7 @@ export default function Lightbox({
   }, [images.length, setSelectedIndex]);
 
   const showNext = useCallback(() => {
+    setLoadedOriginal(null);
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) return currentIndex;
       return currentIndex === images.length - 1 ? 0 : currentIndex + 1;
@@ -110,6 +129,67 @@ export default function Lightbox({
       document.body.style.overflow = "";
     };
   }, [selectedIndex]);
+
+  useEffect(() => {
+    const fallbackSrc = selectedImage?.src;
+    const originalSrc = selectedImage?.originalSrc;
+
+    if (!fallbackSrc || !originalSrc || originalSrc === fallbackSrc) {
+      return;
+    }
+
+    let cancelled = false;
+    const original = new window.Image();
+
+    function stopLoading() {
+      original.onload = null;
+      original.onerror = null;
+
+      if (!original.complete) {
+        original.src = "data:,";
+      }
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      cancelled = true;
+      stopLoading();
+    }, ORIGINAL_LOAD_TIMEOUT_MS);
+
+    original.decoding = "async";
+    original.onerror = () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      stopLoading();
+    };
+    original.onload = () => {
+      void (async () => {
+        try {
+          if (typeof original.decode === "function") {
+            await original.decode();
+          }
+
+          if (cancelled || original.naturalWidth === 0) {
+            return;
+          }
+
+          setLoadedOriginal({ fallbackSrc, originalSrc });
+        } catch {
+          // Keep the already-visible web master if the original cannot decode.
+        } finally {
+          window.clearTimeout(timeoutId);
+          original.onload = null;
+          original.onerror = null;
+        }
+      })();
+    };
+    original.src = originalSrc;
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      stopLoading();
+    };
+  }, [selectedImage?.originalSrc, selectedImage?.src]);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -244,17 +324,20 @@ export default function Lightbox({
           }
         }}
       >
-        {/* Deliberately bypass next/image: only the opened original is requested. */}
+        {/* Start with the web master; only swap after the opened original decodes. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          key={selectedImage.originalSrc ?? selectedImage.src}
-          src={selectedImage.originalSrc ?? selectedImage.src}
+          key={selectedImage.src}
+          src={displaySrc}
           alt={selectedImage.title}
           width={selectedImage.originalWidth ?? selectedImage.width}
           height={selectedImage.originalHeight ?? selectedImage.height}
           loading="eager"
           decoding="async"
           draggable={false}
+          data-lightbox-source={
+            displaySrc === selectedImage.originalSrc ? "original" : "web-master"
+          }
           className={`absolute inset-0 h-full w-full select-none object-contain transition-transform duration-150 ${
             zoom > 1
               ? isDragging
@@ -264,6 +347,11 @@ export default function Lightbox({
           }`}
           style={{
             transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+          }}
+          onError={() => {
+            if (displaySrc === selectedImage.originalSrc) {
+              setLoadedOriginal(null);
+            }
           }}
           onDoubleClick={(event) => {
             event.stopPropagation();
