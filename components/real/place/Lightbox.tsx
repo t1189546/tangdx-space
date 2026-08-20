@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { Dispatch, PointerEvent, SetStateAction } from "react";
 import type { LightboxImage } from "./types";
 
@@ -23,14 +23,14 @@ export default function Lightbox({
   const selectedImage =
     selectedIndex === null ? null : images[selectedIndex];
 
-  function closeLightbox() {
+  const closeLightbox = useCallback(() => {
     setSelectedIndex(null);
     setZoom(1);
     setOffset({ x: 0, y: 0 });
     setIsDragging(false);
-  }
+  }, [setSelectedIndex]);
 
-  function showPrevious() {
+  const showPrevious = useCallback(() => {
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) return currentIndex;
       return currentIndex === 0 ? images.length - 1 : currentIndex - 1;
@@ -39,9 +39,9 @@ export default function Lightbox({
     setZoom(1);
     setOffset({ x: 0, y: 0 });
     setIsDragging(false);
-  }
+  }, [images.length, setSelectedIndex]);
 
-  function showNext() {
+  const showNext = useCallback(() => {
     setSelectedIndex((currentIndex) => {
       if (currentIndex === null) return currentIndex;
       return currentIndex === images.length - 1 ? 0 : currentIndex + 1;
@@ -50,13 +50,13 @@ export default function Lightbox({
     setZoom(1);
     setOffset({ x: 0, y: 0 });
     setIsDragging(false);
-  }
+  }, [images.length, setSelectedIndex]);
 
-  function zoomIn() {
+  const zoomIn = useCallback(() => {
     setZoom((currentZoom) => Math.min(currentZoom + 0.5, 4));
-  }
+  }, []);
 
-  function zoomOut() {
+  const zoomOut = useCallback(() => {
     setZoom((currentZoom) => {
       const nextZoom = Math.max(currentZoom - 0.5, 1);
 
@@ -66,13 +66,13 @@ export default function Lightbox({
 
       return nextZoom;
     });
-  }
+  }, []);
 
-  function resetZoom() {
+  const resetZoom = useCallback(() => {
     setZoom(1);
     setOffset({ x: 0, y: 0 });
     setIsDragging(false);
-  }
+  }, []);
 
   function handlePointerDown(event: PointerEvent<HTMLDivElement>) {
     if (zoom === 1) return;
@@ -112,12 +112,6 @@ export default function Lightbox({
   }, [selectedIndex]);
 
   useEffect(() => {
-    setZoom(1);
-    setOffset({ x: 0, y: 0 });
-    setIsDragging(false);
-  }, [selectedIndex]);
-
-  useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (selectedIndex === null) return;
 
@@ -151,7 +145,7 @@ export default function Lightbox({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedIndex, images.length]);
+  }, [closeLightbox, resetZoom, selectedIndex, showNext, showPrevious, zoomIn, zoomOut]);
 
   if (!selectedImage || selectedIndex === null) {
     return null;
@@ -250,11 +244,18 @@ export default function Lightbox({
           }
         }}
       >
+        {/* Deliberately bypass next/image: only the opened original is requested. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={selectedImage.src}
+          key={selectedImage.originalSrc ?? selectedImage.src}
+          src={selectedImage.originalSrc ?? selectedImage.src}
           alt={selectedImage.title}
+          width={selectedImage.originalWidth ?? selectedImage.width}
+          height={selectedImage.originalHeight ?? selectedImage.height}
+          loading="eager"
+          decoding="async"
           draggable={false}
-          className={`max-h-[82vh] max-w-full select-none object-contain transition-transform duration-150 ${
+          className={`absolute inset-0 h-full w-full select-none object-contain transition-transform duration-150 ${
             zoom > 1
               ? isDragging
                 ? "cursor-grabbing"

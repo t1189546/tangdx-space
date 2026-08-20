@@ -44,9 +44,16 @@ next-env.d.ts
 /public/videos/
 
 # Local media working folders
-media-inbox/
-media-output/
-media-review/
+/media-originals/
+/media-inbox/
+/media-output/
+/media-review/
+
+# Unreferenced local originals moved out of the Belize collection
+/public/images/real/canada/hamilton/IMG_20260530_124840.jpg
+/public/images/real/canada/hamilton/IMG_20260530_125242.jpg
+/public/images/real/canada/hamilton/IMG_20260603_045208.jpg
+/public/images/real/canada/hamilton/IMG_20260604_203844.jpg
 
 # Large local media files
 *.mp4

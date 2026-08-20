@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
+import dynamic from "next/dynamic";
 import SiteHeader from "@/app/components/SiteHeader";
-import Lightbox from "./Lightbox";
+import OptimizedPhoto from "@/components/media/OptimizedPhoto";
 import VisualSectionComponent from "./VisualSection";
 import type {
   LightboxImage,
@@ -11,6 +12,8 @@ import type {
   PlacePageContent,
   VisualImage,
 } from "./types";
+
+const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 
 type PlacePageProps = {
   content: PlacePageContent;
@@ -41,8 +44,7 @@ export default function PlacePage({ content, media }: PlacePageProps) {
         }) scale(${media.heroImage.imageZoom ?? 1})`
       : undefined;
   const heroImageStyle: CSSProperties = {
-    backgroundImage: `url('${media.heroImage.src}')`,
-    backgroundPosition: heroPosition,
+    objectPosition: heroPosition,
     transform: heroTransform,
     transformOrigin: heroPosition,
   };
@@ -66,8 +68,14 @@ export default function PlacePage({ content, media }: PlacePageProps) {
       <SiteHeader />
 
       <section className="relative mt-[80px] flex h-[calc(100vh-80px)] items-center overflow-hidden px-6 md:px-12">
-        <div
-          className="absolute inset-0 bg-cover"
+        <OptimizedPhoto
+          photo={media.heroImage}
+          alt={media.heroImage.title}
+          fill
+          preload
+          quality={85}
+          sizes="100vw"
+          className="object-cover"
           style={heroImageStyle}
         />
         <div className="absolute inset-0 bg-black/45" />
@@ -179,11 +187,13 @@ export default function PlacePage({ content, media }: PlacePageProps) {
         </div>
       </section>
 
-      <Lightbox
-        images={lightboxImages}
-        selectedIndex={selectedIndex}
-        setSelectedIndex={setSelectedIndex}
-      />
+      {selectedIndex !== null && (
+        <Lightbox
+          images={lightboxImages}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+        />
+      )}
     </main>
   );
 }

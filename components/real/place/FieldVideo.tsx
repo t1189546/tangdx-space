@@ -1,6 +1,9 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- Legacy pages still provide string-only posters. */
+
 import { useState } from "react";
+import OptimizedPhoto from "@/components/media/OptimizedPhoto";
 import type { VisualVideo } from "./types";
 
 export default function FieldVideo({ item }: { item: VisualVideo }) {
@@ -32,13 +35,27 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
           </video>
         ) : (
           <div className="absolute inset-0 bg-[#171310]">
-            {item.poster && (
+            {item.poster && item.posterMetadata ? (
+              <OptimizedPhoto
+                photo={item.posterMetadata}
+                alt=""
+                fill
+                sizes={
+                  item.shape === "video-wide"
+                    ? "(min-width: 1280px) 1280px, calc(100vw - 48px)"
+                    : "(min-width: 1280px) 632px, (min-width: 768px) calc(50vw - 26px), calc(100vw - 48px)"
+                }
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : item.poster ? (
               <img
                 src={item.poster}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-            )}
+            ) : null}
 
             <div className="absolute inset-0 bg-black/25" />
 

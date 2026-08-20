@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local-only media sources, processing inboxes, and preserved build reviews.
+    "media-originals/**",
+    "media-inbox/**",
+    "media-output/**",
+    "media-review/**",
   ]),
 ]);
 

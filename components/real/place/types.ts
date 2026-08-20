@@ -1,5 +1,6 @@
-export type LightboxImage = {
-  src: string;
+import type { OptimizedPhotoSource } from "@/components/media/OptimizedPhoto";
+
+export type LightboxImage = OptimizedPhotoSource & {
   title: string;
   subtitle: string;
   cropPosition?: string;
@@ -32,6 +33,7 @@ export type VisualVideo = {
   note?: string;
   src: string;
   poster?: string;
+  posterMetadata?: OptimizedPhotoSource;
   shape: VideoShape;
 };
 

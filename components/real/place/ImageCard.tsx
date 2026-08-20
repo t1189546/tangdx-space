@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import OptimizedPhoto from "@/components/media/OptimizedPhoto";
 import type { VisualImage } from "./types";
 
 type ImageCardProps = {
@@ -30,6 +31,9 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
   };
   const coverImageClass =
     "absolute inset-0 block h-full w-full object-cover transition duration-700";
+  const imageSizes = isSmall
+    ? "(min-width: 1280px) 308px, (min-width: 768px) calc(25vw - 21px), calc(100vw - 48px)"
+    : "(min-width: 1280px) 632px, (min-width: 768px) calc(50vw - 26px), calc(100vw - 48px)";
 
   if (isSmall) {
     return (
@@ -39,11 +43,11 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
         className="group flex flex-col overflow-hidden bg-[#b8ad9a] text-left transition duration-500 hover:-translate-y-1"
       >
         <div className="relative aspect-[4/3] w-full overflow-hidden">
-          <img
-            src={image.src}
+          <OptimizedPhoto
+            photo={image}
             alt={image.title}
-            loading="lazy"
-            decoding="async"
+            fill
+            sizes={imageSizes}
             style={imageStyle}
             className={coverImageClass}
           />
@@ -87,9 +91,11 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
           isWide ? "aspect-[16/9]" : "aspect-[4/3]"
         }`}
       >
-        <img
-          src={image.src}
+        <OptimizedPhoto
+          photo={image}
           alt={image.title}
+          fill
+          sizes={imageSizes}
           style={imageStyle}
           className={`${coverImageClass} ${
             hasTransform ? "" : "group-hover:scale-105"

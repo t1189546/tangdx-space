@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "media:optimize": "node scripts/optimize-images.mjs",
+    "media:upload-originals": "node scripts/upload-originals.mjs",
+    "media:audit": "node scripts/audit-media.mjs",
     "media:posters": "node scripts/generate-video-posters.mjs",
     "media:posters:force": "node scripts/generate-video-posters.mjs --force"
   },
@@ -22,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

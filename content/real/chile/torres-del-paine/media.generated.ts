@@ -1,12 +1,16 @@
 import type { LightboxImage, PlaceMedia, VisualImage, VisualSection, VisualVideo } from "@/components/real/place/types";
+import { createMediaResolver } from "@/components/media/mediaManifest";
+import manifest from "@/content/media/torres-del-paine.generated.json";
 
 const imageBase = "/images/real/chile/torres-del-paine";
 
 const videoBase =
   "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/videos/real/chile/torres-del-paine";
 
+const photos = createMediaResolver(manifest, imageBase);
+
 function localImage(fileName: string) {
-  return `${imageBase}/${fileName}`;
+  return photos.src(fileName);
 }
 
 function r2Video(fileName: string) {
@@ -14,23 +18,51 @@ function r2Video(fileName: string) {
 }
 
 function image(item: Omit<VisualImage, "kind">): VisualImage {
+  const technical = photos.getBySrc(item.src);
+
   return {
     kind: "image",
+    ...(technical
+      ? {
+          width: technical.width,
+          height: technical.height,
+          aspectRatio: technical.aspectRatio,
+          blurDataURL: technical.blurDataURL,
+          originalSrc: technical.originalSrc,
+          originalWidth: technical.originalWidth,
+          originalHeight: technical.originalHeight,
+        }
+      : {}),
     ...item,
   };
 }
 
 function video(item: Omit<VisualVideo, "kind">): VisualVideo {
+  const posterMetadata = item.poster
+    ? photos.getBySrc(item.poster)
+    : undefined;
+
   return {
     kind: "video",
+    ...(posterMetadata
+      ? {
+          posterMetadata: {
+            src: posterMetadata.src,
+            width: posterMetadata.width,
+            height: posterMetadata.height,
+            aspectRatio: posterMetadata.aspectRatio,
+            blurDataURL: posterMetadata.blurDataURL,
+          },
+        }
+      : {}),
     ...item,
   };
 }
 
 export const heroImage: LightboxImage = {
+  ...photos.get("tdp-000.jpg"),
   title: "Torres del Paine",
   subtitle: "The opening view of Chilean Patagonia.",
-  src: localImage("tdp-000.jpg"),
 };
 
 export const visualSections: VisualSection[] = [
@@ -104,7 +136,7 @@ export const visualSections: VisualSection[] = [
         crop: "top",
         shape: "wide",
       }),
-      
+
       image({
         id: "tdp-009",
         title: "Pale Water",
@@ -158,7 +190,7 @@ imageShiftY: "0%",
         crop: "top",
         shape: "large",
       }),
-      
+
             image({
         id: "tdp-011",
         title: "Falling Water",
@@ -230,6 +262,8 @@ imageShiftY: "0%",
         note: "Two figures stop where weather meets the route.",
         src: localImage("tdp-020.jpg"),
         crop: "top",
+         cropPosition: "55% 65%",
+  imageZoom: 1.06,
         shape: "large",
       }),
       image({
@@ -242,14 +276,17 @@ imageShiftY: "0%",
         shape: "large",
       }),
       image({
-        id: "tdp-022",
-        title: "Open Ground",
-        subtitle: "A faint path under a wide sky.",
-        note: "The route bends through grass toward the distant peaks.",
-        src: localImage("tdp-022.jpg"),
+        id: "tdp-024",
+        title: "Against the Wind",
+        subtitle: "A small pause above the valley.",
+        note: "Cold air and distance gather around two travellers.",
+        src: localImage("tdp-024.jpg"),
         crop: "top",
-        shape: "wide",
+         cropPosition: "50% 70%",
+  imageZoom: 1.0,
+        shape: "large",
       }),
+
       image({
         id: "tdp-023",
         title: "Mountain Road",
@@ -260,13 +297,16 @@ imageShiftY: "0%",
         shape: "wide",
       }),
       image({
-        id: "tdp-024",
-        title: "Against the Wind",
-        subtitle: "A small pause above the valley.",
-        note: "Cold air and distance gather around two travellers.",
-        src: localImage("tdp-024.jpg"),
+        id: "tdp-022",
+        title: "Open Ground",
+        subtitle: "A faint path under a wide sky.",
+        note: "The route bends through grass toward the distant peaks.",
+        src: localImage("tdp-022.jpg"),
         crop: "top",
-        shape: "large",
+        cropPosition: "50% 45%",
+  imageZoom: 1.0,
+  imageShiftY: "0%",
+        shape: "wide",
       }),
     ],
   },
@@ -302,6 +342,9 @@ imageShiftY: "0%",
         note: "Dark feathers hold their shape against the pale ground.",
         src: localImage("tdp-025.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -311,6 +354,9 @@ imageShiftY: "0%",
         note: "The animals move softly across the autumn ground.",
         src: localImage("tdp-026.jpg"),
         crop: "center",
+        cropPosition: "50% 15%",
+  imageZoom: 1.05,
+  imageShiftY: "0%",
         shape: "wide",
       }),
       image({
@@ -329,6 +375,9 @@ imageShiftY: "0%",
         note: "Time leaves a narrow opening in the ridge.",
         src: localImage("tdp-028.jpg"),
         crop: "top",
+        cropPosition: "50% 40%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "large",
       }),
       image({
@@ -338,6 +387,9 @@ imageShiftY: "0%",
         note: "Small plants make a dense field across the slope.",
         src: localImage("tdp-029.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "wide",
       }),
       image({
@@ -347,6 +399,9 @@ imageShiftY: "0%",
         note: "A small flowering world stays close to the ground.",
         src: localImage("tdp-030.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -356,6 +411,9 @@ imageShiftY: "0%",
         note: "One quiet form rises from the miniature ground.",
         src: localImage("tdp-031.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.05,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -365,6 +423,9 @@ imageShiftY: "0%",
         note: "The mushroom sits half-hidden in the wet ground.",
         src: localImage("tdp-032.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -374,6 +435,9 @@ imageShiftY: "0%",
         note: "Colour gathers densely near the ground.",
         src: localImage("tdp-033.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -383,6 +447,9 @@ imageShiftY: "0%",
         note: "Soft colour appears briefly inside the dense shrub.",
         src: localImage("tdp-034.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -392,6 +459,9 @@ imageShiftY: "0%",
         note: "The season turns slowly across the leaves.",
         src: localImage("tdp-035.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -419,6 +489,9 @@ imageShiftY: "0%",
         note: "Bright growth appears inside a tangle of wood.",
         src: localImage("tdp-038.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -427,7 +500,9 @@ imageShiftY: "0%",
         subtitle: "Pale growth across sun-warmed stone.",
         note: "A slow surface gathers over the rock.",
         src: localImage("tdp-039.jpg"),
-        crop: "center",
+        crop: "center",cropPosition: "50% 0%",
+  imageZoom: 1.1,
+  imageShiftY: "0%",
         shape: "small",
       }),
     ],
@@ -456,6 +531,9 @@ imageShiftY: "0%",
         note: "Colour and stillness return at the table.",
         src: localImage("tdp-041.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "small",
       }),
       image({
@@ -465,6 +543,9 @@ imageShiftY: "0%",
         note: "A small pause brings shelter into the open air.",
         src: localImage("tdp-042.jpg"),
         crop: "center",
+        cropPosition: "50% 60%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "large",
       }),
       image({
@@ -492,6 +573,9 @@ imageShiftY: "0%",
         note: "A wide image to close the sequence: red trees, mountain, evening.",
         src: localImage("tdp-006.jpg"),
         crop: "center",
+        cropPosition: "50% 0%",
+  imageZoom: 1.00,
+  imageShiftY: "0%",
         shape: "wide",
       }),
       image({
@@ -521,15 +605,7 @@ imageShiftY: "0%",
         crop: "top",
         shape: "wide",
       }),
-      image({
-        id: "tdp-047",
-        title: "Last Light",
-        subtitle: "Pink cloud over the quiet lake.",
-        note: "Evening settles across water, forest, and stone.",
-        src: localImage("tdp-047.jpg"),
-        crop: "top",
-        shape: "wide",
-      }),
+
       image({
         id: "tdp-048",
         title: "After Rain",
@@ -537,6 +613,18 @@ imageShiftY: "0%",
         note: "Brief colour touches the open ground and disappears.",
         src: localImage("tdp-048.jpg"),
         crop: "top",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-047",
+        title: "Last Light",
+        subtitle: "Pink cloud over the quiet lake.",
+        note: "Evening settles across water, forest, and stone.",
+        src: localImage("tdp-047.jpg"),
+        crop: "top",
+        cropPosition: "50% 0%",
+  imageZoom: 1.1,
+  imageShiftY: "0%",
         shape: "wide",
       }),
     ],
