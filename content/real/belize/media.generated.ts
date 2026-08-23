@@ -5,6 +5,7 @@ import type {
   VisualSection,
   VisualVideo,
 } from "@/components/real/place/types";
+import { publicMediaUrl } from "@/components/media/publicMedia";
 
 const imageBase = "/images/real/belize";
 
@@ -95,7 +96,7 @@ export const visualSections: VisualSection[] = [
         title: "Blue Hole Flight",
         subtitle: "A slow pass over reef and open blue.",
         note: "The only Belize video currently used on this page.",
-        src: "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/videos/real/belize/blz-v008.mp4",
+        src: publicMediaUrl("videos/real/belize/blz-v008.mp4"),
         poster: localImage("blz-v008-poster.jpg"),
         shape: "video-wide",
       }),

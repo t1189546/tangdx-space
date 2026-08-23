@@ -47,6 +47,7 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
             photo={image}
             alt={image.title}
             fill
+            loading="lazy"
             sizes={imageSizes}
             style={imageStyle}
             className={coverImageClass}
@@ -66,9 +67,11 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
           </div>
 
           <div>
-            <p className="mt-6 text-sm leading-6 text-black/55">
-              {image.note}
-            </p>
+            {image.note && (
+              <p className="mt-6 text-sm leading-6 text-black/55">
+                {image.note}
+              </p>
+            )}
             <p className="mt-8 text-xs uppercase tracking-[0.25em] text-black/40 transition group-hover:text-black">
               Open image
             </p>
@@ -95,6 +98,7 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
           photo={image}
           alt={image.title}
           fill
+          loading="lazy"
           sizes={imageSizes}
           style={imageStyle}
           className={`${coverImageClass} ${
@@ -113,9 +117,11 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
             {image.subtitle}
           </h3>
 
-          <p className="mt-6 max-w-xl text-sm leading-6 text-white/70">
-            {image.note}
-          </p>
+          {image.note && (
+            <p className="mt-6 max-w-xl text-sm leading-6 text-white/70">
+              {image.note}
+            </p>
+          )}
 
           <p className="mt-8 text-xs uppercase tracking-[0.25em] text-white/60 transition group-hover:text-white">
             Open image

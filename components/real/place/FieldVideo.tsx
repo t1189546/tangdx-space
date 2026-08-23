@@ -73,6 +73,7 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
                 photo={item.posterMetadata}
                 alt=""
                 fill
+                loading="lazy"
                 sizes={
                   item.shape === "video-wide"
                     ? "(min-width: 1280px) 1280px, calc(100vw - 48px)"
@@ -114,25 +115,40 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
       </div>
 
       <div className="grid gap-8 p-7 md:grid-cols-[0.7fr_1.3fr]">
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/35">
-            Field Video
-          </p>
-          <h3 className="font-serif text-3xl leading-tight text-white">
-            {item.title}
-          </h3>
-        </div>
-
-        <div>
-          {item.subtitle && (
-            <p className="text-lg leading-8 text-white/65">{item.subtitle}</p>
-          )}
-          {item.note && (
-            <p className="mt-5 text-sm leading-7 text-white/45">
-              {item.note}
+        {item.eyebrow ? (
+          <>
+            <p className="text-xs uppercase tracking-[0.25em] text-white/35">
+              {item.eyebrow}
             </p>
-          )}
-        </div>
+            <h3 className="font-serif text-3xl leading-tight text-white">
+              {item.title}
+            </h3>
+          </>
+        ) : (
+          <>
+            <div>
+              <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/35">
+                Field Video
+              </p>
+              <h3 className="font-serif text-3xl leading-tight text-white">
+                {item.title}
+              </h3>
+            </div>
+
+            <div>
+              {item.subtitle && (
+                <p className="text-lg leading-8 text-white/65">
+                  {item.subtitle}
+                </p>
+              )}
+              {item.note && (
+                <p className="mt-5 text-sm leading-7 text-white/45">
+                  {item.note}
+                </p>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </article>
   );

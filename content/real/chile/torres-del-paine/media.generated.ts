@@ -1,13 +1,20 @@
 import type { LightboxImage, PlaceMedia, VisualImage, VisualSection, VisualVideo } from "@/components/real/place/types";
 import { createMediaResolver } from "@/components/media/mediaManifest";
+import { publicMediaUrl } from "@/components/media/publicMedia";
 import manifest from "@/content/media/torres-del-paine.generated.json";
 
 const imageBase = "/images/real/chile/torres-del-paine";
 
-const videoBase =
-  "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/videos/real/chile/torres-del-paine";
+const videoBase = publicMediaUrl("videos/real/chile/torres-del-paine");
 
 const photos = createMediaResolver(manifest, imageBase);
+
+const photosWithoutPhoneWatermarks = new Set([
+  "tdp-024",
+  "tdp-061",
+  "tdp-063",
+  "tdp-065",
+]);
 
 function localImage(fileName: string) {
   return photos.src(fileName);
@@ -19,6 +26,9 @@ function r2Video(fileName: string) {
 
 function image(item: Omit<VisualImage, "kind">): VisualImage {
   const technical = photos.getBySrc(item.src);
+  const previewCropPosition =
+    item.cropPosition ??
+    (photosWithoutPhoneWatermarks.has(item.id) ? undefined : "50% 0%");
 
   return {
     kind: "image",
@@ -34,6 +44,8 @@ function image(item: Omit<VisualImage, "kind">): VisualImage {
         }
       : {}),
     ...item,
+    ...(previewCropPosition ? { cropPosition: previewCropPosition } : {}),
+    note: undefined,
   };
 }
 
@@ -41,6 +53,8 @@ function video(item: Omit<VisualVideo, "kind">): VisualVideo {
   const posterMetadata = item.poster
     ? photos.getBySrc(item.poster)
     : undefined;
+
+  const { title, subtitle, ...rest } = item;
 
   return {
     kind: "video",
@@ -55,7 +69,10 @@ function video(item: Omit<VisualVideo, "kind">): VisualVideo {
           },
         }
       : {}),
-    ...item,
+    ...rest,
+    eyebrow: title,
+    title: subtitle ?? title,
+    note: undefined,
   };
 }
 
@@ -63,6 +80,7 @@ export const heroImage: LightboxImage = {
   ...photos.get("tdp-000.jpg"),
   title: "Torres del Paine",
   subtitle: "The opening view of Chilean Patagonia.",
+  cropPosition: "50% 0%",
 };
 
 export const visualSections: VisualSection[] = [
@@ -75,9 +93,8 @@ export const visualSections: VisualSection[] = [
     items: [
       image({
         id: "tdp-007",
-        title: "Base Torees",
-        subtitle: "Granite peaks,Lago Torres, cloud, and wind.",
-        note: "The toughest part of the hike for me.",
+        title: "Base Torres",
+        subtitle: "The toughest part of the hike for me.",
         src: localImage("tdp-007.jpg"),
         crop: "top",
         shape: "large",
@@ -228,6 +245,15 @@ imageShiftY: "0%",
         crop: "top",
         shape: "wide",
       }),
+      image({
+        id: "tdp-060",
+        title: "Mountains & Lakes",
+        subtitle:
+          "The mountains and the lake were both cast in a mysterious blue.",
+        src: localImage("tdp-060.jpg"),
+        crop: "center",
+        shape: "wide",
+      }),
     ],
   },
   {
@@ -303,10 +329,36 @@ imageShiftY: "0%",
         note: "The route bends through grass toward the distant peaks.",
         src: localImage("tdp-022.jpg"),
         crop: "top",
-        cropPosition: "50% 45%",
+        cropPosition: "50% 0%",
   imageZoom: 1.0,
   imageShiftY: "0%",
         shape: "wide",
+      }),
+      image({
+        id: "tdp-061",
+        title: "A Celebratory Moment",
+        subtitle:
+          "A photo with my companions, taken in a moment worth celebrating.",
+        src: localImage("tdp-061.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-065",
+        title: "A Celebratory Moment",
+        subtitle:
+          "A photo with my companions, taken in a moment worth celebrating.",
+        src: localImage("tdp-065.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      video({
+        id: "tdp-v005",
+        title: "On the Trail",
+        subtitle:
+          "Taking in the landscape below and the white clouds in the distance.",
+        src: r2Video("tdp-v005.mp4"),
+        shape: "video-wide",
       }),
     ],
   },
@@ -505,6 +557,22 @@ imageShiftY: "0%",
   imageShiftY: "0%",
         shape: "small",
       }),
+      image({
+        id: "tdp-055",
+        title: "A Bird at Base Torres",
+        subtitle: "I am certain it reached this place more easily than I did.",
+        src: localImage("tdp-055.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-064",
+        title: "Orange Little Plant",
+        subtitle: "Growing stubbornly from a crack in the stones.",
+        src: localImage("tdp-064.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
     ],
   },
   {
@@ -556,6 +624,103 @@ imageShiftY: "0%",
         src: localImage("tdp-043.jpg"),
         crop: "top",
         shape: "large",
+      }),
+      image({
+        id: "tdp-049",
+        title: "Explora",
+        subtitle: "A quiet hotel in the stillness before sunset.",
+        src: localImage("tdp-049.jpg"),
+        crop: "center",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-050",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-050.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-051",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-051.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-052",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-052.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-053",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-053.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-054",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-054.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-056",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-056.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-057",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-057.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-058",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-058.jpg"),
+        crop: "center",
+        shape: "small",
+      }),
+      image({
+        id: "tdp-059",
+        title: "Dining",
+        subtitle:
+          "I loved the delicacy of the food here, and the people I shared it with.",
+        src: localImage("tdp-059.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-063",
+        title: "Watching for Wildlife",
+        subtitle: "I searched for the shape of a puma through the telescope.",
+        src: localImage("tdp-063.jpg"),
+        crop: "center",
+        shape: "small",
       }),
     ],
   },
@@ -625,6 +790,15 @@ imageShiftY: "0%",
         cropPosition: "50% 0%",
   imageZoom: 1.1,
   imageShiftY: "0%",
+        shape: "wide",
+      }),
+      image({
+        id: "tdp-062",
+        title: "Night Sky",
+        subtitle:
+          "The Magellanic Clouds and the Milky Way, spread across the night sky.",
+        src: localImage("tdp-062.jpg"),
+        crop: "center",
         shape: "wide",
       }),
     ],

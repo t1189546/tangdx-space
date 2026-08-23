@@ -3,25 +3,35 @@ import { access, mkdir, readFile, readdir, stat, writeFile } from "node:fs/promi
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { DEFAULT_PUBLIC_MEDIA_BASE } from "./media-config.mjs";
 
 const SUPPORTED_EXTENSIONS = new Set([".jpeg", ".jpg", ".png", ".webp"]);
-const MANIFEST_VERSION = 2;
+const MANIFEST_VERSION = 3;
 const DEFAULT_MAX_SIZE = 3200;
 const DEFAULT_QUALITY = 84;
+const DEFAULT_PUBLIC_BASE = DEFAULT_PUBLIC_MEDIA_BASE;
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
+const originalsRoot = path.join(projectRoot, "media-originals");
+const mediaOutputRoot = path.join(projectRoot, "media-output");
 
 function usage() {
   return `Usage:
-  npm run media:optimize -- --input <folder> --slug <slug> [options]
+  npm run media:optimize -- --input <folder> --location <path> [options]
 
 Options:
-  --output <folder>     Output folder (default: public/media/<slug>)
-  --manifest <file>    Manifest path (default: content/media/<slug>.generated.json)
+  --slug <slug>         Manifest name (default: final location segment)
+  --output <folder>     Staging folder (default: media-output/r2/images/web/<location>)
+  --manifest <file>     Staging manifest (default: media-output/manifests/<slug>.json)
+  --public-base <url>   Public R2 base URL (default: ${DEFAULT_PUBLIC_BASE})
+  --files <names>       Optional comma-separated relative filenames to process
   --max-size <pixels>  Maximum width or height (default: ${DEFAULT_MAX_SIZE})
   --quality <1-100>    WebP quality (default: ${DEFAULT_QUALITY})
   --force              Reprocess every image
-  --help               Show this help`;
+  --help               Show this help
+
+The command never changes the input files and never uploads anything. It writes
+privacy-stripped WebP derivatives to ignored media-output/ staging.`;
 }
 
 function parseArguments(argumentsList) {
@@ -60,15 +70,20 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "") || "photo";
 }
 
-function toPublicPath(filePath) {
-  const publicRoot = path.join(projectRoot, "public");
-  const relativePath = path.relative(publicRoot, filePath);
-
-  if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
-    throw new Error("The output folder must be inside public/ so Next.js can serve it.");
+function cleanRelativePath(value, label) {
+  const cleaned = value.replaceAll("\\", "/").replace(/^\/+|\/+$/g, "");
+  if (!cleaned || cleaned.split("/").includes("..") || path.isAbsolute(cleaned)) {
+    throw new Error(`${label} must be a safe relative path.`);
   }
+  return cleaned;
+}
 
-  return `/${relativePath.split(path.sep).join("/")}`;
+function publicUrl(publicBase, objectPath) {
+  const encodedPath = objectPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+  return `${publicBase}/${encodedPath}`;
 }
 
 async function exists(filePath) {
@@ -223,23 +238,31 @@ async function main() {
     return;
   }
 
-  if (!options.input || !options.slug) {
-    console.error("Both --input and --slug are required.");
+  if (!options.input || !options.location) {
+    console.error("Both --input and --location are required.");
     console.error(usage());
     process.exitCode = 1;
     return;
   }
 
-  const slug = slugify(options.slug);
+  const location = cleanRelativePath(options.location, "--location");
+  const slug = slugify(options.slug ?? location.split("/").at(-1));
   const inputDirectory = path.resolve(projectRoot, options.input);
+  const objectPrefix = `images/web/${location}`;
+  const r2StagingRoot = path.join(projectRoot, "media-output", "r2");
   const outputDirectory = path.resolve(
     projectRoot,
-    options.output ?? path.join("public", "media", slug),
+    options.output ?? path.join("media-output", "r2", ...objectPrefix.split("/")),
   );
   const manifestPath = path.resolve(
     projectRoot,
-    options.manifest ?? path.join("content", "media", `${slug}.generated.json`),
+    options.manifest ?? path.join("media-output", "manifests", `${slug}.json`),
   );
+  const publicBase = (options["public-base"] ?? DEFAULT_PUBLIC_BASE).replace(/\/+$/, "");
+  const publicBaseUrl = new URL(publicBase);
+  if (publicBaseUrl.protocol !== "https:") {
+    throw new Error("--public-base must be an HTTPS URL.");
+  }
   const settings = {
     maxSize: Number(options["max-size"] ?? DEFAULT_MAX_SIZE),
     quality: Number(options.quality ?? DEFAULT_QUALITY),
@@ -254,6 +277,36 @@ async function main() {
     throw new Error(
       "The output folder must be separate from the original input folder.",
     );
+  }
+
+  const inputRelativeToOriginals = path.relative(originalsRoot, inputDirectory);
+  if (
+    !inputRelativeToOriginals ||
+    inputRelativeToOriginals.startsWith("..") ||
+    path.isAbsolute(inputRelativeToOriginals)
+  ) {
+    throw new Error("The input folder must be inside media-originals/.");
+  }
+
+  const outputRelativeToStaging = path.relative(r2StagingRoot, outputDirectory);
+  if (
+    !outputRelativeToStaging ||
+    outputRelativeToStaging.startsWith("..") ||
+    path.isAbsolute(outputRelativeToStaging)
+  ) {
+    throw new Error("The output folder must be inside media-output/r2/.");
+  }
+  if (outputRelativeToStaging.split(path.sep).join("/") !== objectPrefix) {
+    throw new Error(`The output folder must mirror the R2 object prefix: media-output/r2/${objectPrefix}`);
+  }
+
+  const manifestRelativeToOutput = path.relative(mediaOutputRoot, manifestPath);
+  if (
+    !manifestRelativeToOutput ||
+    manifestRelativeToOutput.startsWith("..") ||
+    path.isAbsolute(manifestRelativeToOutput)
+  ) {
+    throw new Error("The staging manifest must be inside media-output/.");
   }
 
   if (!Number.isInteger(settings.maxSize) || settings.maxSize < 1) {
@@ -271,17 +324,43 @@ async function main() {
   await mkdir(outputDirectory, { recursive: true });
   await mkdir(path.dirname(manifestPath), { recursive: true });
 
-  const inputFiles = await collectImages(inputDirectory);
+  const collectedInputFiles = await collectImages(inputDirectory);
+  const requestedFiles = options.files
+    ? new Set(
+        options.files
+          .split(",")
+          .map((value) => cleanRelativePath(value.trim(), "--files entry")),
+      )
+    : null;
+  const inputFiles = requestedFiles
+    ? collectedInputFiles.filter((inputPath) =>
+        requestedFiles.has(path.relative(inputDirectory, inputPath).split(path.sep).join("/")),
+      )
+    : collectedInputFiles;
+
+  if (requestedFiles) {
+    const foundFiles = new Set(
+      inputFiles.map((inputPath) =>
+        path.relative(inputDirectory, inputPath).split(path.sep).join("/"),
+      ),
+    );
+    const missingFiles = [...requestedFiles].filter((fileName) => !foundFiles.has(fileName));
+    if (missingFiles.length > 0) {
+      throw new Error(`Requested image files not found: ${missingFiles.join(", ")}`);
+    }
+  }
+
   const namedInputs = buildOutputNames(inputFiles, inputDirectory);
   const previousManifest = await readManifest(manifestPath);
   const previousImages = previousManifest?.images ?? {};
   const images = {};
   const counts = { processed: 0, skipped: 0 };
-  const publicBase = toPublicPath(outputDirectory);
 
   for (const item of namedInputs) {
     const sourceKey = item.relativePath.split(path.sep).join("/");
     const outputPath = path.join(outputDirectory, item.outputName);
+    const objectPath = `${objectPrefix}/${item.outputName}`;
+    const src = publicUrl(publicBase, objectPath);
     const sourceHash = await sha256(item.inputPath);
     const previous = previousImages[sourceKey];
     const canSkip =
@@ -290,7 +369,8 @@ async function main() {
       previous?.processing?.maxSize === settings.maxSize &&
       previous?.processing?.quality === settings.quality &&
       previous?.processing?.format === settings.format &&
-      previous?.src === `${publicBase}/${item.outputName}` &&
+      previous?.src === src &&
+      previous?.objectPath === objectPath &&
       (await exists(outputPath));
 
     if (canSkip) {
@@ -306,7 +386,9 @@ async function main() {
 
     const technical = await optimizeImage(item.inputPath, outputPath, settings);
     images[sourceKey] = {
-      src: `${publicBase}/${item.outputName}`,
+      src,
+      objectPath,
+      localPath: path.relative(projectRoot, outputPath).split(path.sep).join("/"),
       ...technical,
       sourceHash,
       processing: settings,
@@ -318,14 +400,19 @@ async function main() {
   const manifest = {
     version: MANIFEST_VERSION,
     slug,
+    location,
+    kind: "web-derivatives",
     generatedAt:
       counts.processed === 0 && previousManifest?.generatedAt
         ? previousManifest.generatedAt
         : new Date().toISOString(),
     inputDirectory: path.relative(projectRoot, inputDirectory).split(path.sep).join("/"),
-    outputDirectory: publicBase,
+    outputDirectory: path.relative(projectRoot, outputDirectory).split(path.sep).join("/"),
+    objectPrefix,
+    publicBase,
     settings,
     images,
+    videos: previousManifest?.videos ?? {},
   };
 
   const nextJson = `${JSON.stringify(manifest, null, 2)}\n`;

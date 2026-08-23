@@ -16,7 +16,7 @@ export type VideoShape = "video-wide" | "video-small";
 export type VisualImage = LightboxImage & {
   kind: "image";
   id: string;
-  note: string;
+  note?: string;
   crop: ImageCrop;
   shape: ImageShape;
   cropPosition?: string;
@@ -28,6 +28,7 @@ export type VisualImage = LightboxImage & {
 export type VisualVideo = {
   kind: "video";
   id: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   note?: string;

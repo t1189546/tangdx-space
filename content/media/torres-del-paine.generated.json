@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "slug": "torres-del-paine",
-  "generatedAt": "2026-08-16T18:02:49.790Z",
+  "generatedAt": "2026-08-22T18:32:57.258Z",
   "inputDirectory": "media-originals/real/chile/torres-del-paine",
   "outputDirectory": "/media/torres-del-paine",
   "settings": {
@@ -26,7 +26,7 @@
       },
       "originalWidth": 4091,
       "originalHeight": 3523,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-000.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-000.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-000.jpg",
       "originalBytes": 9840463,
       "originalUploadedHash": "f847f285e1dc2e61cf73da187e5a5b2c6680c588872169ca3fdf0fe839a85bac"
@@ -47,7 +47,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3526,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-001.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-001.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-001.jpg",
       "originalBytes": 8143564,
       "originalUploadedHash": "615652dee8c84e417be8cf910683a640474a8960c0937f2a98846a21646c1661"
@@ -68,7 +68,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-002.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-002.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-002.jpg",
       "originalBytes": 8257828,
       "originalUploadedHash": "0621d10405c48f66337a8891cdaa716d08cb91e12cc70931094f30e24c3d7810"
@@ -89,7 +89,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-003.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-003.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-003.jpg",
       "originalBytes": 11526126,
       "originalUploadedHash": "a04a7e2839f4688912e3132ac6c4c3918b0ead13a992e81e1c8d5aa87f3bf119"
@@ -110,7 +110,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-004.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-004.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-004.jpg",
       "originalBytes": 8982289,
       "originalUploadedHash": "097f0e06b740ada69b970603fa9acf12aae2e48fd8fd3270720be8a0879bd694"
@@ -131,7 +131,7 @@
       },
       "originalWidth": 4091,
       "originalHeight": 3523,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-005.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-005.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-005.jpg",
       "originalBytes": 9481644,
       "originalUploadedHash": "b555c70c0a0473d92835abcdd0fe911eedb39ec7a16f95dc761d27c31080ac79"
@@ -152,7 +152,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-006.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-006.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-006.jpg",
       "originalBytes": 8073794,
       "originalUploadedHash": "99f993018468a985d3591a88087cbe78a48e68c46b30260af0923a9f3a846183"
@@ -173,7 +173,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-007.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-007.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-007.jpg",
       "originalBytes": 11713224,
       "originalUploadedHash": "a9fc99058ba37c04f478d32e1dbf53f36c956dfe4e578e4595a1fc1e77ca5694"
@@ -194,7 +194,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-008.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-008.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-008.jpg",
       "originalBytes": 11500916,
       "originalUploadedHash": "0bbc71cbc2d08c212eca4bd3033ef44de8a93c1ac6bf263dc3c0cd2b2a61f383"
@@ -215,7 +215,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-009.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-009.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-009.jpg",
       "originalBytes": 8713664,
       "originalUploadedHash": "9746ae1144c45fc6f93d6dccb4311084ab4cd5ccca94deaf0f41b7933d5389d4"
@@ -236,7 +236,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-010.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-010.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-010.jpg",
       "originalBytes": 11454547,
       "originalUploadedHash": "a97f9fbf587b74ca3895c45971c059d91d2222b4572de441b1ccf3a09529c7e7"
@@ -257,7 +257,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-011.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-011.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-011.jpg",
       "originalBytes": 11998200,
       "originalUploadedHash": "e552970110ad2d962dc8e36f80a30c6d1e8f5478e33891adf2a708f13201980f"
@@ -278,7 +278,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-012.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-012.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-012.jpg",
       "originalBytes": 10978922,
       "originalUploadedHash": "2624dade07d7f1e236cf668a9dec9e8708e45be2af0ecea46307340c1d739570"
@@ -299,7 +299,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-013.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-013.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-013.jpg",
       "originalBytes": 9205735,
       "originalUploadedHash": "b72b90fee201d43673f0a55c5ee32e096c7583033d55ed14e22676761573ca5b"
@@ -320,7 +320,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-014.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-014.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-014.jpg",
       "originalBytes": 9238722,
       "originalUploadedHash": "8a22c9e2b69319b9e9898e7487010e138426389c8bd288cd58da6ab919f0dff0"
@@ -341,7 +341,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-015.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-015.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-015.jpg",
       "originalBytes": 9292135,
       "originalUploadedHash": "e4d576be4f1210111c953af086ec0be8298ab1606c8de1d7ba41cd80e800d27e"
@@ -362,7 +362,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-016.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-016.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-016.jpg",
       "originalBytes": 9571495,
       "originalUploadedHash": "687514f944a6962ba6858e50d5a88d375406297ad01cbf2ea6f430c6d8502048"
@@ -383,7 +383,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 3844,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-017.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-017.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-017.jpg",
       "originalBytes": 10646377,
       "originalUploadedHash": "977dbdb02734fbcf10b8b648137efe21abe159493895a168bcc792695e0a627f"
@@ -404,7 +404,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-018.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-018.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-018.jpg",
       "originalBytes": 9799631,
       "originalUploadedHash": "2215405d4526262fc3166275f8971004f1a789ad82d0d036720c8def7d0a2600"
@@ -425,7 +425,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-019.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-019.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-019.jpg",
       "originalBytes": 12395485,
       "originalUploadedHash": "d246f65dc8f9380d01233f2fe0851f8664ed0574fa409a64d2008c52ffbdb5e9"
@@ -446,7 +446,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 4552,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-020.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-020.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-020.jpg",
       "originalBytes": 10443433,
       "originalUploadedHash": "f025e37f235ad610553f806c7f5193cd65e1c04540442b04f1c3a9d851d635a3"
@@ -467,7 +467,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-021.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-021.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-021.jpg",
       "originalBytes": 8176211,
       "originalUploadedHash": "fdee65252160bf2f3f14da3c02aa20e50b9a6a797ab4a929f93de74a0629e752"
@@ -488,7 +488,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-022.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-022.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-022.jpg",
       "originalBytes": 10289266,
       "originalUploadedHash": "65663c73ae6a6a9730845d7ebc9568ebb1ce46a30b034b7a12e0e41098eaef7f"
@@ -509,7 +509,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-023.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-023.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-023.jpg",
       "originalBytes": 7651206,
       "originalUploadedHash": "32d1d85e78e031fe9f5ce0d078da1a7681c25cb8a7b4b2054e2e53b7fb7b489a"
@@ -530,7 +530,7 @@
       },
       "originalWidth": 4896,
       "originalHeight": 6528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-024.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-024.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-024.jpg",
       "originalBytes": 13612643,
       "originalUploadedHash": "0ca8e0e574d9e530268287d0a94e0f160f2e24ec967967ba73ae19eaa0fbc9a8"
@@ -551,7 +551,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-025.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-025.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-025.jpg",
       "originalBytes": 9090388,
       "originalUploadedHash": "ce23d509d6608e2afd4a60202c63444cbf5c52143e1f688ac8ec1aa9d5c6b95d"
@@ -572,7 +572,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-026.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-026.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-026.jpg",
       "originalBytes": 11320120,
       "originalUploadedHash": "d764a2186170a7bba887d956119de7d33d8beed84eb52c044091ccb98ca29ef2"
@@ -593,7 +593,7 @@
       },
       "originalWidth": 2819,
       "originalHeight": 2950,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-027.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-027.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-027.jpg",
       "originalBytes": 6450732,
       "originalUploadedHash": "cd7ce967c65f76402c7da5ad15c218addb3da985a5a72d9fa13deca5aa7c9787"
@@ -614,7 +614,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 4552,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-028.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-028.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-028.jpg",
       "originalBytes": 11509638,
       "originalUploadedHash": "08f592d840d37fabe6e0643f12535a18faa7689d1e4169d3cae1627790536811"
@@ -635,7 +635,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-029.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-029.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-029.jpg",
       "originalBytes": 16443504,
       "originalUploadedHash": "022cda5703a8c5936c700ee21cd35db619bf1e69d0ff22ca4a9583cc410b31c3"
@@ -656,7 +656,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-030.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-030.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-030.jpg",
       "originalBytes": 8256170,
       "originalUploadedHash": "18819520e428e8ffb5c800eccd078c32378e0643618037e87b8c655d9d4f093a"
@@ -677,7 +677,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-031.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-031.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-031.jpg",
       "originalBytes": 6571427,
       "originalUploadedHash": "cac6577d1cb4264608cea7dcbac4ee4cb1888896c794844cf7f603bf3b8cb78d"
@@ -698,7 +698,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-032.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-032.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-032.jpg",
       "originalBytes": 9175149,
       "originalUploadedHash": "2309ba44b5fce3f334a45f40cafd79cd576b5c975959e75dabb7cd6b0c582c63"
@@ -719,7 +719,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-033.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-033.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-033.jpg",
       "originalBytes": 9243624,
       "originalUploadedHash": "0bbae446cca0722dbb3e6ac1a7fb7a2f0987e521523a65820c68a2de35c91ecc"
@@ -740,7 +740,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-034.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-034.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-034.jpg",
       "originalBytes": 5791286,
       "originalUploadedHash": "a4ad021baadee8122ed49d3ca530939863c9f44a5fbc98bc0f3050deedfed470"
@@ -761,7 +761,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-035.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-035.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-035.jpg",
       "originalBytes": 6450952,
       "originalUploadedHash": "bfad110e16a2aabf0bd36e7946c616df608905c45af5d249babe62a65ee3bebb"
@@ -782,7 +782,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 4552,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-036.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-036.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-036.jpg",
       "originalBytes": 5175031,
       "originalUploadedHash": "9eb035ef5710a3dd91f630364d06f7f70b813d3c28acdb308c2ebd0b2abe60db"
@@ -803,7 +803,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 4552,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-037.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-037.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-037.jpg",
       "originalBytes": 5667487,
       "originalUploadedHash": "303a357927dd839bc47992a909c11e5b7bd2333235f746c599e7e974ef87390d"
@@ -824,7 +824,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-038.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-038.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-038.jpg",
       "originalBytes": 11749495,
       "originalUploadedHash": "0702bb2d7d455f099ce21dff66fd425ae995f6bccc1566301efdba756e03b9e8"
@@ -845,7 +845,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-039.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-039.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-039.jpg",
       "originalBytes": 7462586,
       "originalUploadedHash": "45bc1d8520cd37ad3980cef6b8b8d975d3296ae3d0ad1aa79823deb2f930ec7d"
@@ -866,7 +866,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-040.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-040.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-040.jpg",
       "originalBytes": 6526016,
       "originalUploadedHash": "1f0f362262b93484c2a74609e55434b568bc43d5be88ca95c2f7184a36aa863a"
@@ -887,7 +887,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-041.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-041.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-041.jpg",
       "originalBytes": 7224176,
       "originalUploadedHash": "8dbc05dd6676c69e2c4d8075909100bc94429105fe5c76c8af616d4075974ba4"
@@ -908,7 +908,7 @@
       },
       "originalWidth": 3072,
       "originalHeight": 4552,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-042.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-042.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-042.jpg",
       "originalBytes": 5459763,
       "originalUploadedHash": "1ae688b7d1660bfc3ee8a1db6e8305c7166ca6fb14dde4073e58b6ae4d4c9e39"
@@ -929,7 +929,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-043.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-043.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-043.jpg",
       "originalBytes": 6760185,
       "originalUploadedHash": "bebe6c933e6347c711a65d930fc4a0bdcd4fa9444b9d5e4635acd848a8902800"
@@ -950,7 +950,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-044.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-044.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-044.jpg",
       "originalBytes": 9642986,
       "originalUploadedHash": "58a2ceb45cdcf7f2022802b5ee836286d6df43d293bc2e1485908cb993f56a6c"
@@ -971,7 +971,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-045.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-045.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-045.jpg",
       "originalBytes": 13437309,
       "originalUploadedHash": "3b0ef2232b28fece20858102b8a78bf2226c96446f0806c4c84834e6f0cf52d7"
@@ -992,7 +992,7 @@
       },
       "originalWidth": 4096,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-046.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-046.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-046.jpg",
       "originalBytes": 8600974,
       "originalUploadedHash": "57f1dd67e84f160f0779ed890561ad0bae33d61d363dec3b33ac9e412e9b9482"
@@ -1013,7 +1013,7 @@
       },
       "originalWidth": 3837,
       "originalHeight": 3003,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-047.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-047.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-047.jpg",
       "originalBytes": 7676842,
       "originalUploadedHash": "3aea13a90c4074fdc70e18cf04d455d66cee60995aab8a8ef077f9e8a8aad78a"
@@ -1034,7 +1034,7 @@
       },
       "originalWidth": 4080,
       "originalHeight": 3528,
-      "originalSrc": "https://pub-bc309b6cc7544045880a4388016510ba.r2.dev/images/originals/real/chile/torres-del-paine/tdp-048.jpg",
+      "originalSrc": "https://media.tangdx.space/images/originals/real/chile/torres-del-paine/tdp-048.jpg",
       "originalPathname": "images/originals/real/chile/torres-del-paine/tdp-048.jpg",
       "originalBytes": 5685789,
       "originalUploadedHash": "0c20d3ac7fcd9056dfb44b90cf6448ed3b441606cadac1ebee4e66b7622e6de8"
@@ -1106,6 +1106,330 @@
       },
       "originalWidth": 1920,
       "originalHeight": 1080
+    },
+    "tdp-049.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-049.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-049.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAoAA4BaJZQCw7EUnTaNzaAA/qNrS60bNv4sfMyjQtJlQyGcEJxllJGYhm7j22qVEw0vGrcBqaocA2JJQAEkAAA=",
+      "bytes": 608616,
+      "sourceBytes": 7068912,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "c1a392986969305cc114d848a087b45cf31a8001363f2ad34adb28601997f60d",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-050.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-050.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-050.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoMAAoAA4BaJZgCdADb8Y2dAAD+gtr8/Pt16j7DHvJXwTB/RPfSNkSKwF5m6gq27garDSme6j+DGUJT64i6T+qqeav26T9CSAAAAA==",
+      "bytes": 603032,
+      "sourceBytes": 8281824,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "8741d2569da852324285d4fd57469f10331648383ca9490b9f6478b4e85230a5",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-051.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-051.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-051.webp",
+      "width": 3200,
+      "height": 2755,
+      "aspectRatio": 1.161525,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoMAAoAA4BaJZgCdAD8LoKGa95AAAD5c6SoC3sPy0JbaQMHr8zVHLdG9qaqSqaVddppHakZE+pXdoYRyCr+C68GyQbvs7VryfAAAA==",
+      "bytes": 541330,
+      "sourceBytes": 8076460,
+      "originalWidth": 4096,
+      "originalHeight": 3526,
+      "sourceHash": "86a5d5f05cd2a215d2f0a0923aa5d901de4c0197b69e40494be0d17cb8efd4ea",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-052.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-052.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-052.webp",
+      "width": 3200,
+      "height": 2755,
+      "aspectRatio": 1.161525,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAgCdASoMAAoAA4BaJagCdAYs3dBO3rTMDQAA+XPf/R3v2l3ZCmjwifgL69I703XcZ80sOu6ZsjBBtHLWzogaeUv00HZQQZB5KfiFn6xmDR5C2ohNZXAAAAA=",
+      "bytes": 563494,
+      "sourceBytes": 6997239,
+      "originalWidth": 4096,
+      "originalHeight": 3526,
+      "sourceHash": "2876c83f5687d259d0ba4a44cabca53fa1eb1abc30d00ec62670942fc8d2e2fa",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-053.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-053.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-053.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoMAAoAA4BaJZACdAEDnqzlAuwAAPkTdIDsUqr760V+lvGJB3pK3B9AZ1rpD/GU4ZovCprrffyJw3pSUAmo+c3aMHTm1x4kkaP2IsvJRiuEEgAA",
+      "bytes": 872864,
+      "sourceBytes": 8276289,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "fc9fc2695d936f8884f61f9a226ca57c0e5273f43e49493ea58b3cac13fa2565",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-054.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-054.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-054.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoMAAoAA4BaJZACdAD6mNgp46Y00AD+mWeBp3ZypgM/JdnErJkOJr5NucjuaIiLoIc61SK6vHwKFkIrvTyYSLjPAJdto3lOWdXX8Aj6mAA=",
+      "bytes": 785420,
+      "sourceBytes": 7088594,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "18e902c5563acf91f6db74d3c8fa7e20f6bc7ccb916916e2be727ce2a4fcc086",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-055.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-055.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-055.webp",
+      "width": 3200,
+      "height": 2767,
+      "aspectRatio": 1.156487,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoMAAoAA4BaJZwAApyras1AAPzq3oBzg5kA6NBlIkqYZFyBveApOo3Ke9m/XqdtjMsgXKzVl75LsjuJ1BgWrRrHIAAAAA==",
+      "bytes": 356764,
+      "sourceBytes": 7760107,
+      "originalWidth": 4080,
+      "originalHeight": 3528,
+      "sourceHash": "4d94e947630266bb215b91b3eb36c2e87aef67b304d3cbd3bbbc6e2829045271",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-056.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-056.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-056.webp",
+      "width": 3200,
+      "height": 2755,
+      "aspectRatio": 1.161525,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoMAAoAA4BaJaACdAD0MjHPPSwA9qL0EDHRiArkMGRrmnvVjc2VjesESWe5f2eStbGofYfb4e46IIdd/5CV2QncM35HO3JAAAA=",
+      "bytes": 557008,
+      "sourceBytes": 6863001,
+      "originalWidth": 4096,
+      "originalHeight": 3526,
+      "sourceHash": "1e68f78d75e7e23393e9cf9789a1da0dd39e00fcef0478c7cb0a54a42e48088c",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-057.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-057.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-057.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoMAAoAA4BaJZgCdAYvXZ+ufZsAAP6tkSr0bsYtOgjc3j3deXF+n6jAFeNfLCHcKNtGybvCAcao1u6mJYqukNQNRiC+ab9VU6sg3SfoYEAAAA==",
+      "bytes": 615806,
+      "sourceBytes": 8707404,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "45ffacd77c1b211284938fe0e9c50a4aa9ffe04819c9f6e061c6cd82f74e9112",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-058.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-058.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-058.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoMAAoAA4BaJaACdADhfr5PBWgAAPaxHiB0bOW4O+aF9uEJ7+gWTrNQeM6ewmfou3ERnUduwQdVT2c9mQTbg5pfgTvFCs5s406msKvVo9bsyHX9wJKxxiAA",
+      "bytes": 737226,
+      "sourceBytes": 9059118,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "d0cc064d827faaa2c2f29e0dc2a9ee3bad5084b7de9551e13b60f81564955104",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-059.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-059.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-059.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoMAAoAA4BaJagCdAEfhv7hgtQAAP5ojYpvojx0+LQYs3X8gZlPlTpNQvT3AyUJU+rgealiLzn+xinPCUh359x64NUoCleqDSrIN0n8l0wIAAAA",
+      "bytes": 591764,
+      "sourceBytes": 6894435,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "20161bcfdeb5511281956f031d98e49e586797b18e7f9b5daa129a00a1ab5097",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-060.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-060.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-060.webp",
+      "width": 3200,
+      "height": 2767,
+      "aspectRatio": 1.156487,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoMAAoAA4BaJagCdADbpXogAAD+374lLXqr74/Jh+a12zxT6ZQ/ESySKEA7UAExiN61qDoj9tV5BzX52xAvmcz1RDBAAA==",
+      "bytes": 1044898,
+      "sourceBytes": 9961877,
+      "originalWidth": 4080,
+      "originalHeight": 3528,
+      "sourceHash": "efda699ed9119a8ab008aa51d8c08ee50bca8b8d12fda6176c0230e16594081a",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-061.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-061.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-061.webp",
+      "width": 3200,
+      "height": 2400,
+      "aspectRatio": 1.333333,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoMAAkAA4BaJYwCdADzskoWAAD+3/EPd2NEClgUHglFnt0XLjqfSQB34iBE6bwEULWFhDLBwOfwHhk06RS7nGAA",
+      "bytes": 477786,
+      "sourceBytes": 597996,
+      "originalWidth": 4032,
+      "originalHeight": 3024,
+      "sourceHash": "87d55fee0c9e219650968e463225212c7091ce832943efa20165076311849956",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-062.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-062.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-062.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoMAAoAA4BaJZQAAtzGq6RCQAD+iT465zro6oBYS8yV3LLz+ANiUDRwAAA=",
+      "bytes": 525040,
+      "sourceBytes": 7779594,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "ac5d75726c9c198b48b256cb8b8ea7946a9d0aa6a5fcce13ab4463b88ef1df18",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-063.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-063.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-063.webp",
+      "width": 2400,
+      "height": 3200,
+      "aspectRatio": 0.75,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoJAAwAA4BaJagCdADdCT7qAAAA/bYV4zqG26TWP1k/hCl0mkvaR2a2mDJbf7eu1EOER3pfLvb1m871F3HM+Irhmva1NT4BYU2ZvuWjXCFwAA==",
+      "bytes": 248250,
+      "sourceBytes": 1752825,
+      "originalWidth": 3024,
+      "originalHeight": 4032,
+      "sourceHash": "a0b1fb298249573a07dea850bbd266f07ad9112b0d6fbab0bf92405ca6ddc081",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-064.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-064.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-064.webp",
+      "width": 3200,
+      "height": 2756,
+      "aspectRatio": 1.161103,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoMAAoAA4BaJYgCdACjRe7AAADOOAdggPRM8vy3ubf9qfnKI8rnKrPZx5bfMwBefVma8uI1ZBSgVcHT8yHW4h0qHqg4dvlgTjCY7tKbaZAAAA==",
+      "bytes": 977796,
+      "sourceBytes": 8477791,
+      "originalWidth": 4096,
+      "originalHeight": 3528,
+      "sourceHash": "69ee66d6dabca4031fd498a758b0b7fdd19d21e98d9dfce3ac1880dc73eeb332",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    },
+    "tdp-065.jpg": {
+      "src": "https://media.tangdx.space/images/web/real/chile/torres-del-paine/tdp-065.webp",
+      "objectPath": "images/web/real/chile/torres-del-paine/tdp-065.webp",
+      "width": 3200,
+      "height": 2400,
+      "aspectRatio": 1.333333,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoMAAkAA4BaJQBdj+ADAwq0m0RAAPhjO/R3fQPm3b5n0t4Jyr71QKuH/shGLxXbw4zR4yKHV/WP8YWyNFk5WtNGGCTVMS97AAAAAA==",
+      "bytes": 581514,
+      "sourceBytes": 804646,
+      "originalWidth": 3307,
+      "originalHeight": 2480,
+      "sourceHash": "0113668efb6bc7bc22419f4cb4a0904924f5ded2db65540df75b8ac9e1cb32d7",
+      "processing": {
+        "maxSize": 3200,
+        "quality": 84,
+        "format": "webp"
+      }
+    }
+  },
+  "location": "real/chile/torres-del-paine",
+  "delivery": {
+    "provider": "cloudflare-r2",
+    "bucket": "tangdx-media",
+    "publicBase": "https://media.tangdx.space",
+    "cacheControl": "public, max-age=31536000, immutable"
+  },
+  "videos": {
+    "tdp-v005.mp4": {
+      "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v005.mp4",
+      "objectPath": "videos/real/chile/torres-del-paine/tdp-v005.mp4",
+      "bytes": 29749672,
+      "sourceHash": "b7e01b0ae8f4b862df48c058ca9b19fbe2e56ce251f1b81583ef31f6eda0c3df",
+      "processing": {
+        "format": "prebuilt-browser-video"
+      }
     }
   }
 }

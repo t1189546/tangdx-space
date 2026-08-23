@@ -57,29 +57,19 @@ function chunkImages(images: VisualImage[], preserveImageShapes = false) {
   return chunks;
 }
 
-function getMosaicPattern(sectionId: string, rowIndex: number): ImageShape[] {
-  const rightLargeSections = ["nature-studies", "shelter"];
-
-  const firstPattern: ImageShape[] = rightLargeSections.includes(sectionId)
-    ? ["small", "small", "large"]
-    : ["large", "small", "small"];
-
-  const secondPattern: ImageShape[] =
-    firstPattern[0] === "large"
-      ? ["small", "small", "large"]
-      : ["large", "small", "small"];
-
-  return rowIndex % 2 === 0 ? firstPattern : secondPattern;
+function getMosaicPattern(rowIndex: number): ImageShape[] {
+  return rowIndex % 2 === 0
+    ? ["large", "small", "small"]
+    : ["small", "small", "large"];
 }
 
 function getDisplayImage(
   image: VisualImage,
   index: number,
-  rowLength: number,
   pattern: ImageShape[],
   preserveImageShapes = false,
 ): VisualImage {
-  if (preserveImageShapes || rowLength < 3) {
+  if (preserveImageShapes) {
     return image;
   }
 
@@ -144,7 +134,7 @@ export default function VisualSectionComponent({
         {visibleImageRows.length > 0 && (
           <div className="mt-16 space-y-4">
             {visibleImageRows.map((row, rowIndex) => {
-              const pattern = getMosaicPattern(sectionId, rowIndex);
+              const pattern = getMosaicPattern(rowIndex);
 
               return (
                 <div
@@ -157,7 +147,6 @@ export default function VisualSectionComponent({
                       image={getDisplayImage(
                         item,
                         index,
-                        row.length,
                         pattern,
                         section.preserveImageShapes,
                       )}

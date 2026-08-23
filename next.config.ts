@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       { pathname: "/images/**", search: "" },
       { pathname: "/media/**", search: "" },
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.tangdx.space",
+        port: "",
+        pathname: "/images/web/**",
+        search: "",
+      },
+    ],
   },
 };
 

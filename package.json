@@ -7,11 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "media:archive": "node scripts/archive-media.mjs",
+    "media:batch": "node scripts/media-batch.mjs",
+    "media:cache:backfill": "node scripts/backfill-media-cache.mjs",
     "media:optimize": "node scripts/optimize-images.mjs",
-    "media:upload-originals": "node scripts/upload-originals.mjs",
+    "media:stage-video": "node scripts/stage-web-video.mjs",
+    "media:upload": "node scripts/upload-web-media.mjs",
     "media:audit": "node scripts/audit-media.mjs",
-    "media:posters": "node scripts/generate-video-posters.mjs",
-    "media:posters:force": "node scripts/generate-video-posters.mjs --force"
+    "media:posters:legacy-public": "node scripts/generate-video-posters.mjs",
+    "media:posters:legacy-public:force": "node scripts/generate-video-posters.mjs --force"
   },
   "dependencies": {
     "next": "16.2.9",

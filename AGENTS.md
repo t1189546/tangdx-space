@@ -7,10 +7,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Media performance rules
 
 - Use the shared optimized photo components and generated media metadata for new photography pages.
-- Never reference giant camera/phone originals from a page. Keep archival sources outside `public/` and run `npm run media:optimize` for each new batch.
+- Keep `media-inbox/`, `media-originals/`, `media-output/`, and `media-review/` local-only and ignored by Git. Never delete or alter an archival master as part of website processing.
+- Never reference giant camera/phone originals from a page. Archive with `npm run media:archive`, generate web derivatives with `npm run media:optimize`, and publish only those derivatives with `npm run media:upload`.
 - Preserve editorial order, captions, crop/object-position, zoom, and shift metadata exactly.
 - Preload only the true LCP/Hero image. Gallery photos must lazy load with layout-accurate `sizes`.
 - Collapsed galleries must not render hidden media before expansion. Lightboxes must fetch only the opened large image, never the full gallery eagerly.
-- Keep full-resolution lightbox originals outside `public/` and Git. Publish them only to the existing Cloudflare R2 `tangdx-media` bucket with the explicit `media:upload-originals -- --execute` workflow; never introduce Vercel Blob. Preserve `originalSrc` in generated metadata and warn that exact originals retain EXIF/GPS.
+- Cloudflare R2 `tangdx-media`, served through `https://media.tangdx.space`, is the public store for high-quality web image/video derivatives. Archival originals remain local-only; never upload a new original or introduce Vercel Blob. Existing legacy R2 original object paths must remain intact until a separately verified migration replaces them.
+- Published `images/web/**` and `videos/**` objects use `Cache-Control: public, max-age=31536000, immutable`; never silently overwrite a canonical media ID.
+- R2 writes must be dry-run first, use immutable copy semantics, verify the object and public URL, and only then update tracked technical metadata. Never delete remote objects during routine media work.
 - Performance work must not redesign existing pages.
 - Run media audit, lint/type checks, and the production build after media changes.
