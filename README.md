@@ -39,7 +39,8 @@ npm run media:batch -- --input "media-inbox/new-place" --location "real/chile/ne
 ```
 
 The batch command archives originals, optimizes only newly copied photos,
-stages reviewed browser-ready videos, uploads with immutable R2 semantics,
+stages reviewed browser-ready videos, generates opening-frame WebP posters from
+those final playback MP4s, uploads with immutable R2 semantics,
 verifies public URLs, and merges technical metadata. It stops before writing if
 it finds a canonical-ID collision, a different existing R2 object, or a new
 video without a matching H.264/yuv420p + AAC `.mp4` under
@@ -70,7 +71,9 @@ not upload, edit the originals, or update the live website.
 
 Video encoding is intentionally separate because HDR, Dolby Vision, codec, and
 audio decisions need review. Create a browser playback copy under
-`media-output/video-ready/` without changing the archival video, then stage it:
+`media-output/video-ready/` without changing the archival video, then stage it.
+Staging automatically selects a usable frame near 0.5 seconds and creates an
+uncropped poster under `media-output/video-posters/`:
 
 ```bash
 npm run media:stage-video -- --input "media-output/video-ready/new-place/new-v001.mp4" --location "real/chile/new-place" --slug "new-place"
@@ -93,6 +96,7 @@ cache headers, and public URLs, and only then merges generated technical metadat
 
 ```text
 images/web/real/<country>/<place>/<photo>.webp
+images/video-posters/real/<country>/<place>/<video>-poster.webp
 videos/real/<country>/<place>/<video>.mp4
 ```
 

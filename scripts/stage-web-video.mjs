@@ -4,6 +4,7 @@ import { access, constants, copyFile, mkdir, readFile, rename, stat, utimes, wri
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_PUBLIC_MEDIA_BASE } from "./media-config.mjs";
+import { stageVideoPoster } from "./generate-video-poster.mjs";
 
 const VIDEO_EXTENSIONS = new Set([".m4v", ".mp4", ".webm"]);
 const DEFAULT_PUBLIC_BASE = DEFAULT_PUBLIC_MEDIA_BASE;
@@ -22,7 +23,8 @@ Options:
   --execute            Copy and update the staging manifest
 
 The input must already be a browser-ready derivative under media-output/video-ready/.
-This command does not encode video and refuses files from media-originals/.`;
+This command does not encode video, refuses files from media-originals/, and
+automatically generates a WebP poster from the final playback MP4.`;
 }
 
 function parseArguments(argumentsList) {
@@ -119,6 +121,14 @@ async function main() {
 
   console.log(`Mode: ${options.execute ? "STAGE" : "DRY RUN"}`);
   console.log(`${displayPath(inputPath)} -> ${objectPath}`);
+  await stageVideoPoster({
+    execute: false,
+    inputPath,
+    location,
+    manifestPath,
+    publicBase: DEFAULT_PUBLIC_BASE,
+    slug,
+  });
   if (!options.execute) {
     console.log("Dry run complete. No file or manifest was changed.");
     return;
@@ -150,6 +160,14 @@ async function main() {
     processing: { format: "prebuilt-browser-video" },
   };
   await writeJsonSafely(manifestPath, manifest);
+  await stageVideoPoster({
+    execute: true,
+    inputPath,
+    location,
+    manifestPath,
+    publicBase: manifest.publicBase,
+    slug,
+  });
   console.log(`Staged video and updated ${displayPath(manifestPath)}.`);
 }
 

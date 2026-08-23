@@ -11,6 +11,7 @@
     "media:batch": "node scripts/media-batch.mjs",
     "media:cache:backfill": "node scripts/backfill-media-cache.mjs",
     "media:optimize": "node scripts/optimize-images.mjs",
+    "media:poster": "node scripts/generate-video-poster.mjs",
     "media:stage-video": "node scripts/stage-web-video.mjs",
     "media:upload": "node scripts/upload-web-media.mjs",
     "media:audit": "node scripts/audit-media.mjs",

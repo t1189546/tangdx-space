@@ -17,6 +17,13 @@ const nextConfig: NextConfig = {
         pathname: "/images/web/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "media.tangdx.space",
+        port: "",
+        pathname: "/images/video-posters/**",
+        search: "",
+      },
     ],
   },
 };

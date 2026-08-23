@@ -1,7 +1,7 @@
 {
   "version": 3,
   "slug": "torres-del-paine",
-  "generatedAt": "2026-08-22T18:32:57.258Z",
+  "generatedAt": "2026-08-23T18:05:20.000Z",
   "inputDirectory": "media-originals/real/chile/torres-del-paine",
   "outputDirectory": "/media/torres-del-paine",
   "settings": {
@@ -1412,6 +1412,141 @@
         "quality": 84,
         "format": "webp"
       }
+    },
+    "tdp-v001-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v001-poster.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v001-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.777778,
+      "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoMAAcAA4BaJYgC7AEOu5FtYAD+568hRP+cesO78pFSMQWZEQbu/Ab5LUV8YpgA",
+      "bytes": 197998,
+      "sourceBytes": 146987749,
+      "sourceHash": "52c51fd07c58279249689acf82d247edeae3f8ab54fc1b8f84cccec00ff31f3e",
+      "posterHash": "e3a5fd9d908b2a962e2348c34b7eaf74a4c82c9ca56445a750fd7d59a381036d",
+      "processing": {
+        "format": "webp-video-poster",
+        "source": "exact-existing-published-playback",
+        "frameTimestamp": 0.5,
+        "frameAnalysis": {
+          "timestamp": 0.5,
+          "mean": 173.63,
+          "p90": 220,
+          "brightRatio": 1,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84,
+        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+      }
+    },
+    "tdp-v002-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v002-poster.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v002-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.777778,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoMAAcAA4BaJYwCdAEO077dHAD+W/O0Guux23489foT+j/6FaUvIvdc1DmmT/qdanuQgAAA",
+      "bytes": 277314,
+      "sourceBytes": 175482951,
+      "sourceHash": "58111486e8c96af8d341f0c6e054f622b7d7a4ce5e7214dc589a26f3cbd32ace",
+      "posterHash": "9701883788ac86cd782ab8d8ddcdd41eb127c5fe88a51b7410f27296dd8890bc",
+      "processing": {
+        "format": "webp-video-poster",
+        "source": "exact-existing-published-playback",
+        "frameTimestamp": 0.5,
+        "frameAnalysis": {
+          "timestamp": 0.5,
+          "mean": 147.8,
+          "p90": 200,
+          "brightRatio": 0.9939,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84,
+        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+      }
+    },
+    "tdp-v003-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.777778,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoMAAcAA4BaJQBOgCHpg5oeQQAA/u2DSf1tii3ZqX1MkmiKX96K3NPFaBJwijfVj6KEsjQCQh4AAA==",
+      "bytes": 323960,
+      "sourceBytes": 92792185,
+      "sourceHash": "cd67d0371ebb3a5ca547aefbab13eaaed2155c143ea74f6d6090093522f52f45",
+      "posterHash": "b668c2fc58138ce181b7f402f8aa9e170fa8d015c12128b064ad5a3c89031ece",
+      "processing": {
+        "format": "webp-video-poster",
+        "source": "exact-existing-published-playback",
+        "frameTimestamp": 0.5,
+        "frameAnalysis": {
+          "timestamp": 0.5,
+          "mean": 151.89,
+          "p90": 218,
+          "brightRatio": 0.9741,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84,
+        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+      }
+    },
+    "tdp-v004-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.777778,
+      "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoMAAcAA4BaJZgCdH8AGAZagAD+xfyg9KIu9PHNg3FZYsDDTmE+mTtLCSbBt/aJhAAAAA==",
+      "bytes": 295360,
+      "sourceBytes": 243355890,
+      "sourceHash": "b572e1a971409ffdab54a5c3eb7d82891f2be1dfe5083bc46145269ca44df6f7",
+      "posterHash": "9edb7bacad529f1c26abcd2df3649c645f77249b636233a2fc45f1248f016fee",
+      "processing": {
+        "format": "webp-video-poster",
+        "source": "exact-existing-published-playback",
+        "frameTimestamp": 0.5,
+        "frameAnalysis": {
+          "timestamp": 0.5,
+          "mean": 165.5,
+          "p90": 199,
+          "brightRatio": 1,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84,
+        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+      }
+    },
+    "tdp-v005-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.777778,
+      "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoMAAcAA4BaJYwCdADceCON+AD9/JjGw+h0jnUWt8UZAmE7gVkHJAJQG9qe/ohsvAA=",
+      "bytes": 420432,
+      "sourceBytes": 29749672,
+      "sourceHash": "b7e01b0ae8f4b862df48c058ca9b19fbe2e56ce251f1b81583ef31f6eda0c3df",
+      "posterHash": "abd17b4662996388f1354958b3570d4caf4a12458f1931b0108dcd01bd3d26b6",
+      "processing": {
+        "format": "webp-video-poster",
+        "source": "final-browser-ready-playback",
+        "frameTimestamp": 0.5,
+        "frameAnalysis": {
+          "timestamp": 0.5,
+          "mean": 140.8,
+          "p90": 187,
+          "brightRatio": 1,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84,
+        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+      }
     }
   },
   "location": "real/chile/torres-del-paine",
@@ -1428,8 +1563,79 @@
       "bytes": 29749672,
       "sourceHash": "b7e01b0ae8f4b862df48c058ca9b19fbe2e56ce251f1b81583ef31f6eda0c3df",
       "processing": {
-        "format": "prebuilt-browser-video"
-      }
+        "format": "prebuilt-browser-video",
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
+      "posterKey": "tdp-v005-poster.webp"
+    },
+    "tdp-v001.mp4": {
+      "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v001.mp4",
+      "objectPath": "videos/real/chile/torres-del-paine/tdp-v001.mp4",
+      "bytes": 146987749,
+      "sourceHash": "52c51fd07c58279249689acf82d247edeae3f8ab54fc1b8f84cccec00ff31f3e",
+      "processing": {
+        "format": "existing-published-playback",
+        "codec": "hevc",
+        "pixelFormat": "yuv420p10le",
+        "colorSpace": "bt2020nc",
+        "colorTransfer": "arib-std-b67",
+        "colorPrimaries": "bt2020"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v001-poster.webp",
+      "posterKey": "tdp-v001-poster.webp"
+    },
+    "tdp-v002.mp4": {
+      "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v002.mp4",
+      "objectPath": "videos/real/chile/torres-del-paine/tdp-v002.mp4",
+      "bytes": 175482951,
+      "sourceHash": "58111486e8c96af8d341f0c6e054f622b7d7a4ce5e7214dc589a26f3cbd32ace",
+      "processing": {
+        "format": "existing-published-playback",
+        "codec": "hevc",
+        "pixelFormat": "yuv420p10le",
+        "colorSpace": "bt2020nc",
+        "colorTransfer": "arib-std-b67",
+        "colorPrimaries": "bt2020"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v002-poster.webp",
+      "posterKey": "tdp-v002-poster.webp"
+    },
+    "tdp-v003.mp4": {
+      "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v003.mp4",
+      "objectPath": "videos/real/chile/torres-del-paine/tdp-v003.mp4",
+      "bytes": 92792185,
+      "sourceHash": "cd67d0371ebb3a5ca547aefbab13eaaed2155c143ea74f6d6090093522f52f45",
+      "processing": {
+        "format": "existing-published-playback",
+        "codec": "hevc",
+        "pixelFormat": "yuv420p10le",
+        "colorSpace": "bt2020nc",
+        "colorTransfer": "arib-std-b67",
+        "colorPrimaries": "bt2020"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
+      "posterKey": "tdp-v003-poster.webp"
+    },
+    "tdp-v004.mp4": {
+      "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v004.mp4",
+      "objectPath": "videos/real/chile/torres-del-paine/tdp-v004.mp4",
+      "bytes": 243355890,
+      "sourceHash": "b572e1a971409ffdab54a5c3eb7d82891f2be1dfe5083bc46145269ca44df6f7",
+      "processing": {
+        "format": "existing-published-playback",
+        "codec": "hevc",
+        "pixelFormat": "yuv420p10le",
+        "colorSpace": "bt2020nc",
+        "colorTransfer": "arib-std-b67",
+        "colorPrimaries": "bt2020"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
+      "posterKey": "tdp-v004-poster.webp"
     }
   }
 }

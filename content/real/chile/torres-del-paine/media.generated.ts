@@ -24,6 +24,10 @@ function r2Video(fileName: string) {
   return `${videoBase}/${fileName}`;
 }
 
+function videoPoster(fileName: keyof typeof manifest.videos) {
+  return manifest.videos[fileName].poster;
+}
+
 function image(item: Omit<VisualImage, "kind">): VisualImage {
   const technical = photos.getBySrc(item.src);
   const previewCropPosition =
@@ -80,7 +84,7 @@ export const heroImage: LightboxImage = {
   ...photos.get("tdp-000.jpg"),
   title: "Torres del Paine",
   subtitle: "The opening view of Chilean Patagonia.",
-  cropPosition: "50% 0%",
+  cropPosition: "50% 35%",
 };
 
 export const visualSections: VisualSection[] = [
@@ -123,7 +127,7 @@ export const visualSections: VisualSection[] = [
         subtitle: "Wind, water, and a mountain disappearing into weather.",
         note: "A muted field video of the lake and mountains. The full sound can be opened gently through the video controls.",
         src: r2Video("tdp-v001.mp4"),
-        poster: localImage("tdp-v001-poster.jpg"),
+        poster: videoPoster("tdp-v001.mp4"),
         shape: "video-wide",
       }),
       video({
@@ -132,7 +136,7 @@ export const visualSections: VisualSection[] = [
         subtitle: "Blue ice, distance, and the slow pressure of cold.",
         note: "A short video fragment for the glacier section of Torres del Paine.",
         src: r2Video("tdp-v002.mp4"),
-        poster: localImage("tdp-v002-poster.jpg"),
+        poster: videoPoster("tdp-v002.mp4"),
         shape: "video-wide",
       }),
       video({
@@ -141,7 +145,7 @@ export const visualSections: VisualSection[] = [
         subtitle: "The three towers, falling water, and the movement of the valley.",
         note: "A field video connecting the iconic granite towers with water and motion.",
         src: r2Video("tdp-v003.mp4"),
-        poster: localImage("tdp-v003-poster.jpg"),
+        poster: videoPoster("tdp-v003.mp4"),
         shape: "video-wide",
       }),
       image({
@@ -273,8 +277,26 @@ imageShiftY: "0%",
         shape: "large",
       }),
       image({
+        id: "tdp-061",
+        title: "A Celebratory Moment",
+        subtitle:
+          "A photo with my companions, taken in a moment worth celebrating.",
+        src: localImage("tdp-061.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
+        id: "tdp-065",
+        title: "A Celebratory Moment",
+        subtitle:
+          "A photo with my companions, taken in a moment worth celebrating.",
+        src: localImage("tdp-065.jpg"),
+        crop: "center",
+        shape: "large",
+      }),
+      image({
         id: "tdp-019",
-        title: "On the Trail",
+        title: "Windy Pass",
         subtitle: "A pause above the snowy valley.",
         note: "The route continues between stone, forest, and snow.",
         src: localImage("tdp-019.jpg"),
@@ -283,7 +305,7 @@ imageShiftY: "0%",
       }),
       image({
         id: "tdp-020",
-        title: "At the Crossing",
+        title: "At the Stop",
         subtitle: "A brief pause beneath the rainbow.",
         note: "Two figures stop where weather meets the route.",
         src: localImage("tdp-020.jpg"),
@@ -292,31 +314,12 @@ imageShiftY: "0%",
   imageZoom: 1.06,
         shape: "large",
       }),
-      image({
-        id: "tdp-021",
-        title: "Through Distance",
-        subtitle: "A figure beneath the mountain range.",
-        note: "The body gives measure to the open ground.",
-        src: localImage("tdp-021.jpg"),
-        crop: "top",
-        shape: "large",
-      }),
-      image({
-        id: "tdp-024",
-        title: "Against the Wind",
-        subtitle: "A small pause above the valley.",
-        note: "Cold air and distance gather around two travellers.",
-        src: localImage("tdp-024.jpg"),
-        crop: "top",
-         cropPosition: "50% 70%",
-  imageZoom: 1.0,
-        shape: "large",
-      }),
+
 
       image({
         id: "tdp-023",
         title: "Mountain Road",
-        subtitle: "A grey line through open country.",
+        subtitle: "A grey line through open area.",
         note: "The road turns quietly beneath the snowy ridge.",
         src: localImage("tdp-023.jpg"),
         crop: "top",
@@ -335,29 +338,33 @@ imageShiftY: "0%",
         shape: "wide",
       }),
       image({
-        id: "tdp-061",
-        title: "A Celebratory Moment",
-        subtitle:
-          "A photo with my companions, taken in a moment worth celebrating.",
-        src: localImage("tdp-061.jpg"),
-        crop: "center",
+        id: "tdp-021",
+        title: "Shark Signal",
+        subtitle: "My friend asked me to make the scuba sign for “shark” in front of the mountains.",
+        note: "The body gives measure to the open ground.",
+        src: localImage("tdp-021.jpg"),
+        crop: "top",
         shape: "large",
       }),
       image({
-        id: "tdp-065",
-        title: "A Celebratory Moment",
-        subtitle:
-          "A photo with my companions, taken in a moment worth celebrating.",
-        src: localImage("tdp-065.jpg"),
-        crop: "center",
+        id: "tdp-024",
+        title: "On the Trail",
+        subtitle: "I loved walking through a landscape like this.",
+        note: "Cold air and distance gather around two travellers.",
+        src: localImage("tdp-024.jpg"),
+        crop: "top",
+         cropPosition: "50% 70%",
+  imageZoom: 1.0,
         shape: "large",
       }),
+
       video({
         id: "tdp-v005",
         title: "On the Trail",
         subtitle:
           "Taking in the landscape below and the white clouds in the distance.",
         src: r2Video("tdp-v005.mp4"),
+        poster: videoPoster("tdp-v005.mp4"),
         shape: "video-wide",
       }),
     ],
@@ -384,7 +391,7 @@ imageShiftY: "0%",
         subtitle: "A herd moving quietly through the open ground.",
         note: "A short field video of guanacos in the Patagonian landscape.",
         src: r2Video("tdp-v004.mp4"),
-        poster: localImage("tdp-v004-poster.jpg"),
+        poster: videoPoster("tdp-v004.mp4"),
         shape: "video-wide",
       }),
       image({

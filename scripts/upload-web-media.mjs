@@ -316,6 +316,8 @@ async function main() {
       const destination = record.kind === "image" ? next.images : next.videos;
       const technical = { ...record.metadata };
       delete technical.localPath;
+      const relatedVideo = technical.relatedVideo;
+      delete technical.relatedVideo;
       destination[record.sourceKey] = {
         ...(destination[record.sourceKey] ?? {}),
         ...technical,
@@ -323,6 +325,18 @@ async function main() {
         objectPath: record.objectPath,
         bytes: record.bytes,
       };
+      if (record.kind === "image" && relatedVideo?.sourceKey) {
+        next.videos[relatedVideo.sourceKey] = {
+          ...(next.videos[relatedVideo.sourceKey] ?? {}),
+          src: relatedVideo.src,
+          objectPath: relatedVideo.objectPath,
+          bytes: relatedVideo.bytes,
+          sourceHash: relatedVideo.sourceHash,
+          processing: relatedVideo.processing,
+          poster: record.src,
+          posterKey: record.sourceKey,
+        };
+      }
     }
     await mkdir(path.dirname(metadataPath), { recursive: true });
     await writeJsonSafely(metadataPath, next);
