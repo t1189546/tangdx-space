@@ -1,7 +1,7 @@
 {
   "version": 3,
   "slug": "torres-del-paine",
-  "generatedAt": "2026-08-23T18:05:20.000Z",
+  "generatedAt": "2026-09-17T08:30:36.503Z",
   "inputDirectory": "media-originals/real/chile/torres-del-paine",
   "outputDirectory": "/media/torres-del-paine",
   "settings": {
@@ -1468,84 +1468,253 @@
       }
     },
     "tdp-v003-poster.webp": {
-      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
-      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.59f9c1f41472cb02.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.59f9c1f41472cb02.webp",
       "width": 1920,
       "height": 1080,
-      "aspectRatio": 1.777778,
-      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoMAAcAA4BaJQBOgCHpg5oeQQAA/u2DSf1tii3ZqX1MkmiKX96K3NPFaBJwijfVj6KEsjQCQh4AAA==",
-      "bytes": 323960,
+      "aspectRatio": 1.7777777777777777,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAwAgCdASoMAAcAA4BaJYgCdEf/ggb4DpOywAD+53v1m/0rRFAN++t3x3K1toVpfUQCj1knMIxyNUkCjEyy7HJZWAA=",
+      "bytes": 360598,
       "sourceBytes": 92792185,
       "sourceHash": "cd67d0371ebb3a5ca547aefbab13eaaed2155c143ea74f6d6090093522f52f45",
-      "posterHash": "b668c2fc58138ce181b7f402f8aa9e170fa8d015c12128b064ad5a3c89031ece",
+      "posterHash": "59f9c1f41472cb02b24f4df4701e1b2ce9c6e60640e87908500ab9eefeeaaa82",
       "processing": {
         "format": "webp-video-poster",
-        "source": "exact-existing-published-playback",
+        "status": "published-verified",
+        "pipelineVersion": "srgb-playback-v2",
+        "fingerprint": "d3203bfd5656c7f74ba6297b48199507917705046a4a1b0bef7b2f13baa202d9",
+        "source": "final-playback",
+        "inputColor": {
+          "video": {
+            "codec_name": "hevc",
+            "profile": "Main 10",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p10le",
+            "color_range": "tv",
+            "color_space": "bt2020nc",
+            "color_transfer": "arib-std-b67",
+            "color_primaries": "bt2020",
+            "side_data_list": [
+              {
+                "side_data_type": "DOVI configuration record",
+                "dv_version_major": 1,
+                "dv_version_minor": 0,
+                "dv_profile": 8,
+                "dv_level": 5,
+                "rpu_present_flag": 1,
+                "el_present_flag": 0,
+                "bl_present_flag": 1,
+                "dv_bl_signal_compatibility_id": 4,
+                "dv_md_compression": "none"
+              }
+            ]
+          },
+          "dolbyVision": {
+            "side_data_type": "DOVI configuration record",
+            "dv_version_major": 1,
+            "dv_version_minor": 0,
+            "dv_profile": 8,
+            "dv_level": 5,
+            "rpu_present_flag": 1,
+            "el_present_flag": 0,
+            "bl_present_flag": 1,
+            "dv_bl_signal_compatibility_id": 4,
+            "dv_md_compression": "none"
+          },
+          "rotation": 0,
+          "width": 1920,
+          "height": 1080,
+          "audio": [
+            {
+              "codec_name": "aac",
+              "profile": "LC",
+              "codec_type": "audio"
+            }
+          ],
+          "duration": 12.9738,
+          "formatNames": [
+            "mov",
+            "mp4",
+            "m4a",
+            "3gp",
+            "3g2",
+            "mj2"
+          ]
+        },
+        "colorPolicy": {},
+        "colorHandling": "dolby-vision-8.4-libplacebo",
+        "toneMapping": "hable",
+        "warnings": [],
+        "outputColor": "sRGB ICC, full range, no EXIF/GPS",
+        "requestedPosterTime": 0.5,
         "frameTimestamp": 0.5,
         "frameAnalysis": {
-          "timestamp": 0.5,
-          "mean": 151.89,
-          "p90": 218,
-          "brightRatio": 0.9741,
+          "mean": 141.05,
+          "p90": 212,
           "usable": true
         },
         "maxSize": 1920,
-        "quality": 84,
-        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+        "quality": 84
       }
     },
     "tdp-v004-poster.webp": {
-      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
-      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.6710759510023bbd.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.6710759510023bbd.webp",
       "width": 1920,
       "height": 1080,
-      "aspectRatio": 1.777778,
-      "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoMAAcAA4BaJZgCdH8AGAZagAD+xfyg9KIu9PHNg3FZYsDDTmE+mTtLCSbBt/aJhAAAAA==",
-      "bytes": 295360,
+      "aspectRatio": 1.7777777777777777,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAABQAgCdASoMAAcAA4BaJaACdH8IwABZu48Hj8AA/lvWU5+3D5hKfb4HLGWR+vUnK1Ce5Wy38qRIAAAA",
+      "bytes": 345902,
       "sourceBytes": 243355890,
       "sourceHash": "b572e1a971409ffdab54a5c3eb7d82891f2be1dfe5083bc46145269ca44df6f7",
-      "posterHash": "9edb7bacad529f1c26abcd2df3649c645f77249b636233a2fc45f1248f016fee",
+      "posterHash": "6710759510023bbdca9c488ce1bd2b34260de3693061169bcdb0d2279a37a770",
       "processing": {
         "format": "webp-video-poster",
-        "source": "exact-existing-published-playback",
+        "status": "published-verified",
+        "pipelineVersion": "srgb-playback-v2",
+        "fingerprint": "cd59f1c61fca8fb472d7b0f9b93e5a4ad14b5a6195ead609b1e84f2b746f2215",
+        "source": "final-playback",
+        "inputColor": {
+          "video": {
+            "codec_name": "hevc",
+            "profile": "Main 10",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p10le",
+            "color_range": "tv",
+            "color_space": "bt2020nc",
+            "color_transfer": "arib-std-b67",
+            "color_primaries": "bt2020",
+            "side_data_list": [
+              {
+                "side_data_type": "DOVI configuration record",
+                "dv_version_major": 1,
+                "dv_version_minor": 0,
+                "dv_profile": 8,
+                "dv_level": 5,
+                "rpu_present_flag": 1,
+                "el_present_flag": 0,
+                "bl_present_flag": 1,
+                "dv_bl_signal_compatibility_id": 4,
+                "dv_md_compression": "none"
+              }
+            ]
+          },
+          "dolbyVision": {
+            "side_data_type": "DOVI configuration record",
+            "dv_version_major": 1,
+            "dv_version_minor": 0,
+            "dv_profile": 8,
+            "dv_level": 5,
+            "rpu_present_flag": 1,
+            "el_present_flag": 0,
+            "bl_present_flag": 1,
+            "dv_bl_signal_compatibility_id": 4,
+            "dv_md_compression": "none"
+          },
+          "rotation": 0,
+          "width": 1920,
+          "height": 1080,
+          "audio": [
+            {
+              "codec_name": "aac",
+              "profile": "LC",
+              "codec_type": "audio"
+            }
+          ],
+          "duration": 34.862789,
+          "formatNames": [
+            "mov",
+            "mp4",
+            "m4a",
+            "3gp",
+            "3g2",
+            "mj2"
+          ]
+        },
+        "colorPolicy": {},
+        "colorHandling": "dolby-vision-8.4-libplacebo",
+        "toneMapping": "hable",
+        "warnings": [],
+        "outputColor": "sRGB ICC, full range, no EXIF/GPS",
+        "requestedPosterTime": 0.5,
         "frameTimestamp": 0.5,
         "frameAnalysis": {
-          "timestamp": 0.5,
-          "mean": 165.5,
-          "p90": 199,
-          "brightRatio": 1,
+          "mean": 150.25,
+          "p90": 185,
           "usable": true
         },
         "maxSize": 1920,
-        "quality": 84,
-        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+        "quality": 84
       }
     },
     "tdp-v005-poster.webp": {
-      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
-      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
+      "src": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.df67da9b6ed0da34.webp",
+      "objectPath": "images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.df67da9b6ed0da34.webp",
       "width": 1920,
       "height": 1080,
-      "aspectRatio": 1.777778,
+      "aspectRatio": 1.7777777777777777,
       "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoMAAcAA4BaJYwCdADceCON+AD9/JjGw+h0jnUWt8UZAmE7gVkHJAJQG9qe/ohsvAA=",
-      "bytes": 420432,
+      "bytes": 376876,
       "sourceBytes": 29749672,
       "sourceHash": "b7e01b0ae8f4b862df48c058ca9b19fbe2e56ce251f1b81583ef31f6eda0c3df",
-      "posterHash": "abd17b4662996388f1354958b3570d4caf4a12458f1931b0108dcd01bd3d26b6",
+      "posterHash": "df67da9b6ed0da3463047c2bd82c2ee526e87febe042cdc7d80ed332f08aac55",
       "processing": {
         "format": "webp-video-poster",
-        "source": "final-browser-ready-playback",
+        "status": "published-verified",
+        "pipelineVersion": "srgb-playback-v2",
+        "fingerprint": "75e61fad3d70a95e4ab4f2199216ca560d0b13122a11428dc8104ab2a9ea3ff8",
+        "source": "final-playback",
+        "inputColor": {
+          "video": {
+            "codec_name": "h264",
+            "profile": "High",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709"
+          },
+          "rotation": 0,
+          "width": 1920,
+          "height": 1080,
+          "audio": [
+            {
+              "codec_name": "aac",
+              "profile": "LC",
+              "codec_type": "audio"
+            }
+          ],
+          "duration": 8.633008,
+          "formatNames": [
+            "mov",
+            "mp4",
+            "m4a",
+            "3gp",
+            "3g2",
+            "mj2"
+          ]
+        },
+        "colorPolicy": {},
+        "colorHandling": "sdr",
+        "toneMapping": null,
+        "warnings": [],
+        "outputColor": "sRGB ICC, full range, no EXIF/GPS",
+        "requestedPosterTime": 0.5,
         "frameTimestamp": 0.5,
         "frameAnalysis": {
-          "timestamp": 0.5,
-          "mean": 140.8,
-          "p90": 187,
-          "brightRatio": 1,
+          "mean": 142.37,
+          "p90": 189,
           "usable": true
         },
         "maxSize": 1920,
-        "quality": 84,
-        "colorHandling": "direct-final-playback-decode-no-added-tone-map"
+        "quality": 84
       }
     }
   },
@@ -1566,12 +1735,13 @@
         "format": "prebuilt-browser-video",
         "codec": "h264",
         "pixelFormat": "yuv420p",
-        "colorSpace": "bt709",
-        "colorTransfer": "bt709",
-        "colorPrimaries": "bt709"
+        "colorTransfer": "bt709"
       },
-      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.webp",
-      "posterKey": "tdp-v005-poster.webp"
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v005-poster.df67da9b6ed0da34.webp",
+      "posterKey": "tdp-v005-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777777777777
     },
     "tdp-v001.mp4": {
       "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v001.mp4",
@@ -1614,12 +1784,13 @@
         "format": "existing-published-playback",
         "codec": "hevc",
         "pixelFormat": "yuv420p10le",
-        "colorSpace": "bt2020nc",
-        "colorTransfer": "arib-std-b67",
-        "colorPrimaries": "bt2020"
+        "colorTransfer": "arib-std-b67"
       },
-      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.webp",
-      "posterKey": "tdp-v003-poster.webp"
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v003-poster.59f9c1f41472cb02.webp",
+      "posterKey": "tdp-v003-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777777777777
     },
     "tdp-v004.mp4": {
       "src": "https://media.tangdx.space/videos/real/chile/torres-del-paine/tdp-v004.mp4",
@@ -1630,12 +1801,13 @@
         "format": "existing-published-playback",
         "codec": "hevc",
         "pixelFormat": "yuv420p10le",
-        "colorSpace": "bt2020nc",
-        "colorTransfer": "arib-std-b67",
-        "colorPrimaries": "bt2020"
+        "colorTransfer": "arib-std-b67"
       },
-      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.webp",
-      "posterKey": "tdp-v004-poster.webp"
+      "poster": "https://media.tangdx.space/images/video-posters/real/chile/torres-del-paine/tdp-v004-poster.6710759510023bbd.webp",
+      "posterKey": "tdp-v004-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777777777777
     }
   }
 }

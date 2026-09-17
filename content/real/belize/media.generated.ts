@@ -6,6 +6,10 @@ import type {
   VisualVideo,
 } from "@/components/real/place/types";
 import { publicMediaUrl } from "@/components/media/publicMedia";
+import { createMediaResolver } from "@/components/media/mediaManifest";
+import manifest from "@/content/media/belize.generated.json";
+
+const generatedMedia = createMediaResolver(manifest);
 
 const imageBase = "/images/real/belize";
 
@@ -63,6 +67,7 @@ function video(item: Omit<VisualVideo, "kind">): VisualVideo {
   return {
     kind: "video",
     ...rest,
+    ...generatedMedia.video(`${item.id}.mp4`),
     eyebrow: title,
     title: subtitle ?? title,
     note: undefined,

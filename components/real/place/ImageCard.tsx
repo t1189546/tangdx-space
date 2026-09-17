@@ -31,9 +31,12 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
   };
   const coverImageClass =
     "absolute inset-0 block h-full w-full object-cover transition duration-700";
-  const imageSizes = isSmall
-    ? "(min-width: 1280px) 308px, (min-width: 768px) calc(25vw - 21px), calc(100vw - 48px)"
-    : "(min-width: 1280px) 632px, (min-width: 768px) calc(50vw - 26px), calc(100vw - 48px)";
+  // Match the heading-aligned media width and four-column mosaic (16px gaps).
+  const imageSizes = isWide
+    ? "auto, (min-width: 1376px) 1280px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"
+    : isSmall
+      ? "auto, (min-width: 1376px) 308px, (min-width: 768px) calc(25vw - 36px), calc(100vw - 48px)"
+      : "auto, (min-width: 1376px) 632px, (min-width: 768px) calc(50vw - 56px), calc(100vw - 48px)";
 
   if (isSmall) {
     return (
@@ -85,12 +88,12 @@ export default function ImageCard({ image, onOpen }: ImageCardProps) {
     <button
       type="button"
       onClick={() => onOpen(image.src)}
-      className={`group relative block overflow-hidden bg-[#b8ad9a] text-left transition duration-500 hover:-translate-y-1 ${
-        isLarge ? "md:col-span-2" : ""
-      } ${isWide ? "md:col-span-2" : ""}`}
+      className={`group relative flex flex-col overflow-hidden bg-[#b8ad9a] text-left transition duration-500 hover:-translate-y-1 ${
+        isWide ? "md:col-span-4" : isLarge ? "md:col-span-2" : ""
+      }`}
     >
       <div
-        className={`relative w-full overflow-hidden ${
+        className={`relative w-full flex-1 overflow-hidden ${
           isWide ? "aspect-[16/9]" : "aspect-[4/3]"
         }`}
       >

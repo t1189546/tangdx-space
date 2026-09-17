@@ -3,6 +3,7 @@ import { access, mkdir, mkdtemp, readFile, rename, rm, stat, writeFile } from "n
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { hashFile } from "./generate-video-poster.mjs";
 import {
   DEFAULT_PUBLIC_MEDIA_BASE,
   DEFAULT_R2_BUCKET,
@@ -227,6 +228,9 @@ async function main() {
     }
     if (!(await exists(record.localPath))) throw new Error(`Missing staged file: ${displayPath(record.localPath)}`);
     record.bytes = (await stat(record.localPath)).size;
+    if (record.metadata.posterHash && await hashFile(record.localPath) !== record.metadata.posterHash) {
+      throw new Error(`Staged poster hash no longer matches its manifest: ${record.objectPath}`);
+    }
     record.src = publicUrl(publicBase, record.objectPath);
   }
 
@@ -316,6 +320,11 @@ async function main() {
       const destination = record.kind === "image" ? next.images : next.videos;
       const technical = { ...record.metadata };
       delete technical.localPath;
+      if (technical.processing) {
+        technical.processing = { ...technical.processing };
+        delete technical.processing.sourcePath;
+        if (technical.processing.status === "ready-local") technical.processing.status = "published-verified";
+      }
       const relatedVideo = technical.relatedVideo;
       delete technical.relatedVideo;
       destination[record.sourceKey] = {
@@ -332,6 +341,9 @@ async function main() {
           objectPath: relatedVideo.objectPath,
           bytes: relatedVideo.bytes,
           sourceHash: relatedVideo.sourceHash,
+          width: relatedVideo.width,
+          height: relatedVideo.height,
+          aspectRatio: relatedVideo.aspectRatio,
           processing: relatedVideo.processing,
           poster: record.src,
           posterKey: record.sourceKey,

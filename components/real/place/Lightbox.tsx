@@ -194,6 +194,8 @@ export default function Lightbox({
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (selectedIndex === null) return;
+      // Browser zoom shortcuts must not also change the photo's own zoom.
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
 
       if (event.key === "Escape") {
         closeLightbox();
@@ -315,6 +317,8 @@ export default function Lightbox({
         onPointerLeave={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onWheel={(event) => {
+          // Leave Ctrl-wheel / trackpad pinch to native browser zoom.
+          if (event.ctrlKey || event.metaKey) return;
           event.stopPropagation();
 
           if (event.deltaY < 0) {

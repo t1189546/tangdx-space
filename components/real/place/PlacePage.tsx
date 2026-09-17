@@ -6,11 +6,13 @@ import dynamic from "next/dynamic";
 import SiteHeader from "@/app/components/SiteHeader";
 import OptimizedPhoto from "@/components/media/OptimizedPhoto";
 import VisualSectionComponent from "./VisualSection";
+import MediaContentLayout from "./MediaContentLayout";
 import type {
   LightboxImage,
   PlaceMedia,
   PlacePageContent,
   VisualImage,
+  VisualVideo,
 } from "./types";
 
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
@@ -33,6 +35,11 @@ export default function PlacePage({ content, media }: PlacePageProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const lightboxImages = useMemo(() => getLightboxImages(media), [media]);
+  const videos = useMemo(
+    () => media.visualSections.flatMap((section) =>
+      section.items.filter((item): item is VisualVideo => item.kind === "video")),
+    [media],
+  );
   const heroPosition =
     media.heroImage.cropPosition ?? content.hero.backgroundPosition ?? "center";
   const heroTransform =
@@ -149,13 +156,15 @@ export default function PlacePage({ content, media }: PlacePageProps) {
         </div>
       </section>
 
-      {media.visualSections.map((section) => (
-        <VisualSectionComponent
-          key={section.id}
-          section={section}
-          onOpenImage={openLightboxBySrc}
-        />
-      ))}
+      <MediaContentLayout videos={videos}>
+        {media.visualSections.map((section) => (
+          <VisualSectionComponent
+            key={section.id}
+            section={section}
+            onOpenImage={openLightboxBySrc}
+          />
+        ))}
+      </MediaContentLayout>
 
       <section className="bg-[#b8b1a5] px-6 py-28 text-white md:px-12 lg:py-36">
         <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.8fr_1.2fr]">

@@ -1,0 +1,130 @@
+{
+  "version": 5,
+  "slug": "belize",
+  "location": "real/belize",
+  "images": {
+    "blz-v008-poster.webp": {
+      "src": "https://media.tangdx.space/images/video-posters/real/belize/blz-v008-poster.d7514f5eeed32f90.webp",
+      "objectPath": "images/video-posters/real/belize/blz-v008-poster.d7514f5eeed32f90.webp",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777777777777,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAQAgCdASoMAAcAA4BaJbACdLoAAkQyIcTAAODYzMztspauFczAj75BW5KHH0+3Yu4BHLjP/qxjmc4BoFXQAA==",
+      "bytes": 181156,
+      "sourceBytes": 400282236,
+      "sourceHash": "632da43e9df094a9f4dfa430fb46228972ec1a08be3da7659235bb8e9efa25d7",
+      "posterHash": "d7514f5eeed32f90d75207bd734c1ad7af4d04f9db2d1659ba58656d3ebb557e",
+      "processing": {
+        "format": "webp-video-poster",
+        "status": "published-verified",
+        "pipelineVersion": "srgb-playback-v2",
+        "fingerprint": "584265de8f22887841450ac91788562d1bcc61f9707df80a1a47f5f02e22b828",
+        "source": "final-playback",
+        "inputColor": {
+          "video": {
+            "codec_name": "hevc",
+            "profile": "Main 10",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p10le",
+            "color_range": "tv",
+            "color_space": "bt2020nc",
+            "color_transfer": "arib-std-b67",
+            "color_primaries": "bt2020",
+            "side_data_list": [
+              {
+                "side_data_type": "DOVI configuration record",
+                "dv_version_major": 1,
+                "dv_version_minor": 0,
+                "dv_profile": 8,
+                "dv_level": 5,
+                "rpu_present_flag": 1,
+                "el_present_flag": 0,
+                "bl_present_flag": 1,
+                "dv_bl_signal_compatibility_id": 4,
+                "dv_md_compression": "none"
+              },
+              {
+                "side_data_type": "Display Matrix",
+                "displaymatrix": "\n00000000:       -65536           0           0\n00000001:            0      -65536           0\n00000002:            0           0  1073741824\n",
+                "rotation": -180
+              }
+            ]
+          },
+          "dolbyVision": {
+            "side_data_type": "DOVI configuration record",
+            "dv_version_major": 1,
+            "dv_version_minor": 0,
+            "dv_profile": 8,
+            "dv_level": 5,
+            "rpu_present_flag": 1,
+            "el_present_flag": 0,
+            "bl_present_flag": 1,
+            "dv_bl_signal_compatibility_id": 4,
+            "dv_md_compression": "none"
+          },
+          "rotation": -180,
+          "width": 1920,
+          "height": 1080,
+          "audio": [
+            {
+              "codec_name": "aac",
+              "profile": "LC",
+              "codec_type": "audio"
+            }
+          ],
+          "duration": 57.5603,
+          "formatNames": [
+            "mov",
+            "mp4",
+            "m4a",
+            "3gp",
+            "3g2",
+            "mj2"
+          ]
+        },
+        "colorPolicy": {},
+        "colorHandling": "dolby-vision-8.4-libplacebo",
+        "toneMapping": "hable",
+        "warnings": [],
+        "outputColor": "sRGB ICC, full range, no EXIF/GPS",
+        "requestedPosterTime": 0.2,
+        "frameTimestamp": 0.2,
+        "frameAnalysis": {
+          "mean": 156.09,
+          "p90": 182,
+          "usable": true
+        },
+        "maxSize": 1920,
+        "quality": 84
+      }
+    }
+  },
+  "videos": {
+    "blz-v008.mp4": {
+      "src": "https://media.tangdx.space/videos/real/belize/blz-v008.mp4",
+      "objectPath": "videos/real/belize/blz-v008.mp4",
+      "bytes": 400282236,
+      "sourceHash": "632da43e9df094a9f4dfa430fb46228972ec1a08be3da7659235bb8e9efa25d7",
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.7777777777777777,
+      "processing": {
+        "format": "existing-published-playback",
+        "codec": "hevc",
+        "pixelFormat": "yuv420p10le",
+        "colorTransfer": "arib-std-b67"
+      },
+      "poster": "https://media.tangdx.space/images/video-posters/real/belize/blz-v008-poster.d7514f5eeed32f90.webp",
+      "posterKey": "blz-v008-poster.webp"
+    }
+  },
+  "generatedAt": "2026-09-17T08:30:46.615Z",
+  "delivery": {
+    "provider": "cloudflare-r2",
+    "bucket": "tangdx-media",
+    "publicBase": "https://media.tangdx.space",
+    "cacheControl": "public, max-age=31536000, immutable"
+  }
+}

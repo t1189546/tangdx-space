@@ -9,6 +9,8 @@
     "lint": "eslint",
     "media:archive": "node scripts/archive-media.mjs",
     "media:batch": "node scripts/media-batch.mjs",
+    "media:preview": "node scripts/preview-media.mjs",
+    "test:media": "node --test scripts/tests/*.test.mjs",
     "media:cache:backfill": "node scripts/backfill-media-cache.mjs",
     "media:optimize": "node scripts/optimize-images.mjs",
     "media:poster": "node scripts/generate-video-poster.mjs",

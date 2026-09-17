@@ -7,6 +7,7 @@ import type {
 } from "./types";
 import FieldVideo from "./FieldVideo";
 import ImageCard from "./ImageCard";
+import styles from "./FieldVideo.module.css";
 
 type VisualSectionProps = {
   section: VisualSectionData;
@@ -58,6 +59,8 @@ function chunkImages(images: VisualImage[], preserveImageShapes = false) {
 }
 
 function getMosaicPattern(rowIndex: number): ImageShape[] {
+  // Ordinary galleries repeat LSS / SSL, even on an incomplete final row.
+  // Full-row images require an explicit wide shape in preserveImageShapes mode.
   return rowIndex % 2 === 0
     ? ["large", "small", "small"]
     : ["small", "small", "large"];
@@ -114,9 +117,9 @@ export default function VisualSectionComponent({
   return (
     <section
       id={sectionId}
-      className="border-t border-black/10 px-6 py-28 md:px-12 lg:py-36"
+      className="border-t border-black/10 py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className={styles.content} data-media-heading>
         <p className="mb-5 text-xs uppercase tracking-[0.35em] text-black/45">
           {section.number} / {section.title}
         </p>
@@ -130,7 +133,8 @@ export default function VisualSectionComponent({
             {section.description}
           </p>
         </div>
-
+      </div>
+        <div className={styles.content} data-media-content>
         {visibleImageRows.length > 0 && (
           <div className="mt-16 space-y-4">
             {visibleImageRows.map((row, rowIndex) => {
@@ -139,6 +143,7 @@ export default function VisualSectionComponent({
               return (
                 <div
                   key={`${sectionId}-image-row-${rowIndex}`}
+                  data-photo-row
                   className="grid gap-4 md:grid-cols-4"
                 >
                   {row.map((item, index) => (
@@ -172,7 +177,7 @@ export default function VisualSectionComponent({
         )}
 
         {visibleVideos.length > 0 && (
-          <div className="mt-16 grid gap-4 md:grid-cols-4">
+          <div className="mt-16 grid gap-4">
             {visibleVideos.map((item) => (
               <FieldVideo key={item.src} item={item} />
             ))}
@@ -190,7 +195,7 @@ export default function VisualSectionComponent({
             </button>
           </div>
         )}
-      </div>
+        </div>
     </section>
   );
 }

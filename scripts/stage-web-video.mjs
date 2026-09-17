@@ -123,6 +123,7 @@ async function main() {
   console.log(`${displayPath(inputPath)} -> ${objectPath}`);
   await stageVideoPoster({
     execute: false,
+    videoId: path.parse(targetName).name,
     inputPath,
     location,
     manifestPath,
@@ -152,6 +153,7 @@ async function main() {
   manifest.publicBase = manifest.publicBase ?? DEFAULT_PUBLIC_BASE;
   manifest.videos = manifest.videos ?? {};
   manifest.videos[targetName] = {
+    ...(manifest.videos[targetName] ?? {}),
     src: `${manifest.publicBase.replace(/\/+$/, "")}/${objectPath}`,
     objectPath,
     localPath: displayPath(targetPath),
@@ -162,6 +164,7 @@ async function main() {
   await writeJsonSafely(manifestPath, manifest);
   await stageVideoPoster({
     execute: true,
+    videoId: path.parse(targetName).name,
     inputPath,
     location,
     manifestPath,

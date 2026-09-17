@@ -32,7 +32,14 @@ checks with the fail-closed batch command. The dry run changes nothing:
 npm run media:batch -- --input "media-inbox/new-place" --location "real/chile/new-place" --prefix "new" --slug "new-place"
 ```
 
-After reviewing the plan, execute the same pipeline explicitly:
+For local preparation without contacting R2, use `--prepare-only`. This also
+refreshes configured video posters, including previously imported videos:
+
+```bash
+npm run media:batch -- --input "media-inbox/new-place" --location "real/chile/new-place" --prefix "new" --slug "new-place" --prepare-only --execute
+```
+
+After reviewing the plan, the existing publishing mode remains explicit (it **uploads**):
 
 ```bash
 npm run media:batch -- --input "media-inbox/new-place" --location "real/chile/new-place" --prefix "new" --slug "new-place" --execute
@@ -72,8 +79,9 @@ not upload, edit the originals, or update the live website.
 Video encoding is intentionally separate because HDR, Dolby Vision, codec, and
 audio decisions need review. Create a browser playback copy under
 `media-output/video-ready/` without changing the archival video, then stage it.
-Staging automatically selects a usable frame near 0.5 seconds and creates an
-uncropped poster under `media-output/video-posters/`:
+Staging automatically selects the first valid opening frame (starting at 0),
+preserves configured `posterTime` selections, and creates an uncropped,
+color-managed WebP poster under `media-output/video-posters/`:
 
 ```bash
 npm run media:stage-video -- --input "media-output/video-ready/new-place/new-v001.mp4" --location "real/chile/new-place" --slug "new-place"
@@ -96,7 +104,7 @@ cache headers, and public URLs, and only then merges generated technical metadat
 
 ```text
 images/web/real/<country>/<place>/<photo>.webp
-images/video-posters/real/<country>/<place>/<video>-poster.webp
+images/video-posters/real/<country>/<place>/<video>-poster.<content-hash>.webp
 videos/real/<country>/<place>/<video>.mp4
 ```
 
@@ -126,7 +134,41 @@ npm run media:audit
 
 Use `--dir` and `--limit` to narrow the report, for example `npm run media:audit -- --dir "public/media/new-place" --limit 20`.
 
-### Existing legacy media
+### Local video poster preparation and preview
+
+Put reviewed playback MP4s in the collection's `media-output/video-ready/` folder.
+Collections and optional per-video frame/color settings live in
+`content/media/video-posters.config.json`. One collection entry discovers all
+MP4s recursively; do not manually maintain poster paths. Existing import and
+`media:stage-video` commands call the same generator automatically.
+
+```bash
+# Inspect, then prepare every configured new/changed poster locally (NO uploads):
+npm run media:batch -- --posters --dry-run
+npm run media:batch -- --posters --execute
+
+# Rebuild one; --force without --only rebuilds all configured posters:
+npm run media:batch -- --posters --only tdp-v003 --force --execute
+
+# Keep running to watch for stable file/config changes (NO uploads):
+npm run media:batch -- --posters --watch --execute
+
+# Preview unpublished posters; stop/restart after regenerating:
+npm run media:preview
+
+# Pipeline regressions (requires local FFmpeg + FFprobe):
+npm run test:media
+```
+
+Preview is at `http://localhost:3005`. It serves only allowlisted WebP derivatives
+over loopback; never originals. Normal `npm run dev` / build continues to use
+verified published metadata, not unpublished R2 URLs. No poster generation runs
+during `npm run build` or a visitor request.
+
+See [video poster workflow and verification](docs/video-posters.md) for color
+policies, Windows/Unicode inputs, watch safety, current results and publication gates.
+
+### Existing legacy media (unchanged)
 
 Older Torres del Paine entries still use local `public/media/` WebP files and
 legacy R2 `originalSrc` objects through the custom media domain; newer entries

@@ -1,0 +1,27 @@
+.group { position: relative; --media-gutter: 1.5rem; }
+.content { width: var(--media-layout-width, 100%); padding-inline: var(--media-gutter); margin-inline: auto; }
+.slot { min-width: 0; }
+.card {
+  width: 100%;
+  scroll-margin-top: var(--video-scroll-margin, 96px);
+}
+.frame { aspect-ratio: 16 / 9; }
+.rail { position: absolute; inset: 0 0 auto; visibility: hidden; pointer-events: none; }
+.measurements { position: fixed; top: 0; left: -20000px; visibility: hidden; pointer-events: none; }
+.captionContainer { container-type: inline-size; }
+.caption {
+  display: grid;
+  align-content: start;
+  gap: clamp(0.875rem, 2cqi, 2rem);
+  padding: clamp(1.125rem, 2.2cqi, 1.75rem);
+  overflow-wrap: anywhere;
+}
+.captionTitle { font-size: clamp(1.5rem, 3cqi, 1.875rem); line-height: 1.25; }
+.captionSubtitle { font-size: clamp(1rem, 1.7cqi, 1.125rem); line-height: 1.65; }
+.captionNote { margin-top: 1rem; font-size: 0.875rem; line-height: 1.65; }
+@media (min-width: 768px) {
+  .group { --media-gutter: max(3rem, calc((100% - 80rem) / 2)); }
+  .caption { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+.caption > * { min-width: 0; }
+.captionSpace { min-height: var(--video-caption-height, auto); }

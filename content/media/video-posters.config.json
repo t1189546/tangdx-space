@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "collections": [
+    {
+      "location": "real/chile/torres-del-paine",
+      "slug": "torres-del-paine",
+      "readyDirectory": "media-output/video-ready/torres-del-paine",
+      "legacyPlayback": [
+        { "id": "tdp-v003", "input": "public/videos/real/chile/torres-del-paine/tdp-v003.mp4" },
+        { "id": "tdp-v004", "input": "public/videos/real/chile/torres-del-paine/tdp-v004.mp4" }
+      ],
+      "overrides": {
+        "tdp-v003": { "posterTime": 0.5 },
+        "tdp-v004": { "posterTime": 0.5 },
+        "tdp-v005": { "posterTime": 0.5 }
+      }
+    },
+    {
+      "location": "real/belize",
+      "slug": "belize",
+      "readyDirectory": "media-output/video-ready/belize",
+      "legacyPlayback": [
+        { "id": "blz-v008", "input": "public/videos/real/belize/blz-v008.mp4" }
+      ],
+      "overrides": { "blz-v008": { "posterTime": 0.2 } }
+    }
+  ]
+}

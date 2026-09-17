@@ -4,6 +4,7 @@ import { access, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
+import { preparePosters, watchPosters } from "./prepare-video-posters.mjs";
 import {
   DEFAULT_PUBLIC_MEDIA_BASE,
   DEFAULT_R2_BUCKET,
@@ -28,6 +29,15 @@ Options:
   --bucket <name>        Existing R2 bucket (default: ${DEFAULT_BUCKET})
   --public-base <url>    Public R2 URL (default: ${DEFAULT_PUBLIC_BASE})
   --execute              Archive, optimize, stage, upload, verify, and update metadata
+  --prepare-only         With --execute: archive/prepare locally, never contact R2
+  --posters              Prepare posters from configured playback collections (local-only)
+  --only <id,id>         In --posters mode, select video IDs (or location/ID)
+  --poster-time <sec>    In --posters mode, explicitly override the frame time
+  --config <file>        Poster collection config (default: content/media/video-posters.config.json)
+  --force               Rebuild posters even if fingerprint is unchanged
+  --watch               In --posters --execute mode, watch stable local files
+  --dry-run             Explicit no-write mode
+  --no-preview          Do not add prepared posters to the local preview index
   --help                 Show this help
 
 The default is a fail-closed dry run. Originals are copied, never moved or
@@ -46,11 +56,12 @@ function parseArguments(argumentsList) {
     "--remote",
     "--bucket",
     "--public-base",
+    "--only", "--config", "--poster-time",
   ]);
 
   for (let index = 0; index < argumentsList.length; index += 1) {
     const argument = argumentsList[index];
-    if (argument === "--execute" || argument === "--help") {
+    if (["--execute", "--help", "--posters", "--prepare-only", "--force", "--watch", "--dry-run", "--no-preview"].includes(argument)) {
       options[argument.slice(2)] = true;
       continue;
     }
@@ -179,6 +190,14 @@ async function main() {
     console.log(usage());
     return;
   }
+  if (options["dry-run"]) options.execute = false;
+  if (options.posters) {
+    if (options.watch) return watchPosters(options);
+    const result = await preparePosters(options);
+    if (result.counts.failed) process.exitCode = 1;
+    return;
+  }
+  if (options.watch || options.only || options.force || options["poster-time"]) throw new Error("Poster selection/watch options require --posters");
   if (!options.input || !options.location || !options.prefix) {
     throw new Error(`--input, --location, and --prefix are required.\n\n${usage()}`);
   }
@@ -212,7 +231,7 @@ async function main() {
   const plannedVideos = plannedCopies.filter((item) => item.kind === "video");
 
   const remoteRoot = `${remote}:${bucket}`;
-  const remoteListing = await run(
+  const remoteListing = options["prepare-only"] ? { stdout: "[]" } : await run(
     "rclone",
     ["lsjson", remoteRoot, "--recursive", "--files-only", "--hash", "--s3-no-check-bucket"],
     { capture: true },
@@ -289,6 +308,12 @@ async function main() {
   for (const item of photoUploads) console.log(`optimize  ${item.targetName}`);
   for (const item of videoUploads) console.log(`stage     ${displayPath(item.readyPath)} -> ${item.outputName}`);
 
+  const posterOptions = { location, slug, "video-ready": displayPath(readyDirectory), "no-preview": options["no-preview"] };
+  // Also detect changed playback/configuration even when the inbox was archived
+  // on a previous run. This is part of import, not an optional remembered step.
+  const posterPlan = await preparePosters(posterOptions);
+  if (posterPlan.counts.failed) throw new Error("Poster preflight failed; inspect the per-file report before publishing");
+
   if (!options.execute) {
     console.log("Dry run complete. No files, manifests, or R2 objects were changed.");
     return;
@@ -326,7 +351,10 @@ async function main() {
     ]);
   }
 
-  if (photoUploads.length > 0 || videoUploads.length > 0) {
+  const preparedPosters = await preparePosters({ ...posterOptions, execute: true });
+  if (preparedPosters.counts.failed) throw new Error("Some posters failed; successful local outputs were retained. Nothing from this batch was uploaded.");
+
+  if (!options["prepare-only"] && (photoUploads.length > 0 || videoUploads.length > 0)) {
     const uploadArguments = [
       path.join(scriptDirectory, "upload-web-media.mjs"),
       "--location", location,
@@ -339,6 +367,14 @@ async function main() {
     ];
     await run(process.execPath, uploadArguments);
     await run(process.execPath, [...uploadArguments, "--execute"]);
+  }
+
+  if (!options["prepare-only"] && preparedPosters.jobs.length > 0) {
+    const posterUploadArguments = [path.join(scriptDirectory, "upload-web-media.mjs"),
+      "--location", location, "--slug", slug, "--manifest", preparedPosters.jobs[0].manifestPath,
+      "--metadata", displayPath(metadataPath), "--remote", remote, "--bucket", bucket, "--public-base", publicBase];
+    await run(process.execPath, posterUploadArguments);
+    await run(process.execPath, [...posterUploadArguments, "--execute"]);
   }
 
   console.log("Batch complete. Inbox files and archival originals remain unchanged.");

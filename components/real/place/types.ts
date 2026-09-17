@@ -35,6 +35,9 @@ export type VisualVideo = {
   src: string;
   poster?: string;
   posterMetadata?: OptimizedPhotoSource;
+  width?: number;
+  height?: number;
+  aspectRatio?: number;
   shape: VideoShape;
 };
 

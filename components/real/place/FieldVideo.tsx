@@ -2,26 +2,36 @@
 
 /* eslint-disable @next/next/no-img-element -- Legacy pages still provide string-only posters. */
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import OptimizedPhoto from "@/components/media/OptimizedPhoto";
+import { videoPreview } from "@/components/media/videoPreview";
+import VideoCaption from "./VideoCaption";
+import styles from "./FieldVideo.module.css";
 import type { VisualVideo } from "./types";
 
 const DEFAULT_VIDEO_VOLUME = 0.3;
 
 export default function FieldVideo({ item }: { item: VisualVideo }) {
-  return <FieldVideoCard key={item.src} item={item} />;
+  return <FieldVideoCard key={item.src} item={videoPreview(item)} />;
 }
 
 function FieldVideoCard({ item }: { item: VisualVideo }) {
   const [isActivated, setIsActivated] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const hasPlayed = useRef(false);
+  const userChangedVolume = useRef(false);
+  const slotRef = useRef<HTMLDivElement>(null);
 
   const applyDefaultVolume = useCallback((video: HTMLVideoElement) => {
+    if (hasPlayed.current || userChangedVolume.current || video.dataset.volumeControl === "system") return;
     try {
       video.volume = DEFAULT_VIDEO_VOLUME;
     } catch {
-      // iOS Safari may expose volume as read-only and keep native system volume.
+      // Some iOS browsers leave volume controlled by the system.
     } finally {
+      const supported = Math.abs(video.volume - DEFAULT_VIDEO_VOLUME) < 0.001;
+      video.dataset.volumeControl = supported ? "supported" : "system";
+      if (!supported) video.muted = true; // No surprise full-volume audio.
       video.dataset.effectiveVolume = String(video.volume);
     }
   }, []);
@@ -40,13 +50,19 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
     [applyDefaultVolume],
   );
 
+  useEffect(() => {
+    if (!isActivated || !slotRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) videoRef.current?.pause();
+    });
+    observer.observe(slotRef.current);
+    return () => observer.disconnect();
+  }, [isActivated, slotRef]);
+
   return (
-    <article
-      className={`overflow-hidden bg-[#1f1a17] text-[#f4f0e8] ${
-        item.shape === "video-wide" ? "md:col-span-4" : "md:col-span-2"
-      }`}
-    >
-      <div className="relative aspect-video w-full overflow-hidden bg-black">
+    <div ref={slotRef} className={styles.slot}>
+    <article data-video-id={item.id} className={`${styles.card} bg-[#1f1a17] text-[#f4f0e8]`}>
+      <div className={`${styles.frame} relative w-full overflow-hidden bg-black`}>
         {isActivated ? (
           <video
             ref={activateVideo}
@@ -56,12 +72,16 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
             playsInline
             preload="none"
             aria-label={item.title}
-            className="h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-contain"
             onLoadedMetadata={(event) => {
               applyDefaultVolume(event.currentTarget);
             }}
             onPlay={(event) => {
               applyDefaultVolume(event.currentTarget);
+              hasPlayed.current = true;
+            }}
+            onVolumeChange={(event) => {
+              if (hasPlayed.current || Math.abs(event.currentTarget.volume - DEFAULT_VIDEO_VOLUME) > 0.001) userChangedVolume.current = true;
             }}
           >
             Your browser does not support the video tag.
@@ -74,12 +94,8 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
                 alt=""
                 fill
                 loading="lazy"
-                sizes={
-                  item.shape === "video-wide"
-                    ? "(min-width: 1280px) 1280px, calc(100vw - 48px)"
-                    : "(min-width: 1280px) 632px, (min-width: 768px) calc(50vw - 26px), calc(100vw - 48px)"
-                }
-                className="absolute inset-0 h-full w-full object-cover"
+                sizes="auto, (min-width: 1376px) 1280px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"
+                className="absolute inset-0 h-full w-full object-contain"
               />
             ) : item.poster ? (
               <img
@@ -87,11 +103,9 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
                 alt=""
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain"
               />
             ) : null}
-
-            <div className="absolute inset-0 bg-black/25" />
 
             {!item.poster && (
               <p className="absolute inset-x-6 bottom-6 font-serif text-2xl text-white/70">
@@ -114,42 +128,8 @@ function FieldVideoCard({ item }: { item: VisualVideo }) {
         )}
       </div>
 
-      <div className="grid gap-8 p-7 md:grid-cols-[0.7fr_1.3fr]">
-        {item.eyebrow ? (
-          <>
-            <p className="text-xs uppercase tracking-[0.25em] text-white/35">
-              {item.eyebrow}
-            </p>
-            <h3 className="font-serif text-3xl leading-tight text-white">
-              {item.title}
-            </h3>
-          </>
-        ) : (
-          <>
-            <div>
-              <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/35">
-                Field Video
-              </p>
-              <h3 className="font-serif text-3xl leading-tight text-white">
-                {item.title}
-              </h3>
-            </div>
-
-            <div>
-              {item.subtitle && (
-                <p className="text-lg leading-8 text-white/65">
-                  {item.subtitle}
-                </p>
-              )}
-              {item.note && (
-                <p className="mt-5 text-sm leading-7 text-white/45">
-                  {item.note}
-                </p>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+      <VideoCaption item={item} />
     </article>
+    </div>
   );
 }
